@@ -445,7 +445,7 @@ body {
             <div class="relative">
 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-brand-400 font-semibold text-sm">$</span>
               
-<input id="billAmount" type="number" min="200" max="100000" step="50" value="3500" class="field pl-14 text-lg font-display font-bold">            </div>
+<input id="billAmount" type="number" min="200" max="100000" step="50" value="3500" class="field pl-20 text-lg font-display font-bold">            </div>
             <input id="billRange" type="range" min="500" max="30000" step="100" value="3500" class="mt-4">
             <div class="flex justify-between text-[11px] text-brand-400 mt-1"><span>$500</span><span>$30,000+</span></div>
           </div>

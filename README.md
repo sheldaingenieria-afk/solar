@@ -10,9 +10,10 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        navy: {50:'#EFF6FF',100:'#DBEAFE',700:'#17395F',800:'#0F2745',900:'#0A1A2F',950:'#050E1C'},
-        solar: {50:'#FFFBEB',100:'#FEF3C7',200:'#FDE68A',300:'#FCD34D',400:'#FBBF24',500:'#F59E0B',600:'#D97706',700:'#B45309'},
-        eco: {400:'#34D399',500:'#10B981',600:'#059669'}
+        ink: '#070B14',
+        panel: '#0B1120',
+        card: '#0D1424',
+        sun: { 300:'#FFD76A', 400:'#FFC233', 500:'#FFB020', 600:'#F59E0B', 700:'#E8820C' }
       },
       fontFamily: {
         sans: ['Inter','system-ui','-apple-system','Segoe UI','sans-serif'],
@@ -30,93 +31,161 @@ tailwind.config = {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  html { scroll-behavior: smooth; }
-  body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-  section { scroll-margin-top: 110px; }
+  html{ scroll-behavior:smooth; scroll-padding-top:96px; }
+  body{ background:#070B14; color:#E7ECF5; font-family:'Inter',sans-serif; overflow-x:hidden; }
+  ::selection{ background:#FFB020; color:#070B14; }
 
-  /* Reveal animations */
-  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1); }
-  .reveal.in { opacity: 1; transform: none; }
+  /* Scrollbar */
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:#070B14; }
+  ::-webkit-scrollbar-thumb{ background:linear-gradient(#FFB020,#E8820C); border-radius:8px; border:2px solid #070B14; }
 
-  /* Background grid */
-  .grid-lines {
-    background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-    background-size: 58px 58px;
-    mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 78%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 78%);
+  /* Custom cursor */
+  @media (pointer:fine){
+    *{ cursor:none !important; }
   }
-  .grid-lines-light {
-    background-image: linear-gradient(rgba(10,26,47,.045) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(10,26,47,.045) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
+  .cursor-dot,.cursor-ring{ position:fixed; top:0; left:0; pointer-events:none; z-index:10001; border-radius:50%; transform:translate(-50%,-50%); }
+  .cursor-dot{ width:7px; height:7px; background:#FFB020; }
+  .cursor-ring{ width:38px; height:38px; border:1.5px solid rgba(255,176,32,.55); transition:width .3s ease, height .3s ease, border-color .3s ease, background .3s ease; }
+  .cursor-ring.hovered{ width:64px; height:64px; border-color:rgba(255,176,32,.9); background:rgba(255,176,32,.08); }
+  @media (pointer:coarse){ .cursor-dot,.cursor-ring{ display:none; } }
 
-  /* Glow blobs */
-  .glow { position: absolute; border-radius: 9999px; filter: blur(100px); pointer-events: none; }
+  /* Noise texture */
+  .noise{ position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-  /* Floating */
-  @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
-  .floaty { animation: floaty 6.5s ease-in-out infinite; }
+  /* Gradient text */
+  .text-grad{ background:linear-gradient(100deg,#FFE9B0 0%,#FFB020 45%,#FF8A00 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-  /* Solar panel sheen */
-  .panel-cell { position: relative; overflow: hidden; }
-  .panel-cell::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,.42) 50%, transparent 68%);
-    transform: translateX(-130%);
-    animation: sheen 5s ease-in-out infinite;
-  }
-  @keyframes sheen { 0% { transform: translateX(-130%);} 55%,100% { transform: translateX(130%);} }
+  /* Glass */
+  .glass{ background:rgba(13,20,36,.6); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.08); }
 
-  /* Range sliders */
-  input[type="range"] {
-    -webkit-appearance: none; appearance: none;
-    width: 100%; height: 6px; border-radius: 999px;
-    background: #E2E8F0; outline: none; cursor: pointer;
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; appearance: none;
-    width: 22px; height: 22px; border-radius: 50%;
-    background: linear-gradient(145deg,#FBBF24,#D97706);
-    border: 3px solid #fff;
-    box-shadow: 0 2px 10px rgba(217,119,6,.55);
-    cursor: pointer;
-    transition: transform .15s ease;
-  }
-  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); }
-  input[type="range"]::-moz-range-thumb {
-    width: 16px; height: 16px; border-radius: 50%;
-    background: #F59E0B; border: 3px solid #fff;
-    box-shadow: 0 2px 10px rgba(217,119,6,.55); cursor: pointer;
-  }
+  /* Nav */
+  #nav{ transition:background .4s ease, border-color .4s ease, backdrop-filter .4s ease; border-bottom:1px solid transparent; }
+  #nav.nav-scrolled{ background:rgba(7,11,20,.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,.07); }
+  .nav-link{ position:relative; }
+  .nav-link::after{ content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:linear-gradient(90deg,#FFB020,#FF8A00); transition:width .35s ease; border-radius:2px; }
+  .nav-link:hover::after{ width:100%; }
 
-  /* WhatsApp pulse */
-  @keyframes pulseRing {
-    0% { box-shadow: 0 0 0 0 rgba(37,211,102,.6); }
-    70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
-    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-  }
-  .wa-pulse { animation: pulseRing 2.4s infinite; }
+  /* Marquee */
+  .marquee-track{ display:flex; width:max-content; animation:marquee 30s linear infinite; }
+  .marquee-track:hover{ animation-play-state:paused; }
+  @keyframes marquee{ to{ transform:translateX(-50%);} }
 
-  .tab-active { background: linear-gradient(135deg,#0A1A2F,#17395F); color: #fff; box-shadow: 0 10px 30px -10px rgba(10,26,47,.6); }
+  /* Rotating ring text */
+  @keyframes spin-slow{ to{ transform:rotate(360deg);} }
+  .animate-spin-slow{ animation:spin-slow 28s linear infinite; transform-origin:center; }
 
-  .text-gradient {
-    background: linear-gradient(100deg,#FBBF24 0%,#F59E0B 45%,#FCD34D 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
+  /* Float */
+  @keyframes floaty{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-14px);} }
+  .floaty{ animation:floaty 6s ease-in-out infinite; }
+  .floaty-2{ animation:floaty 7.5s ease-in-out infinite; animation-delay:1.2s; }
 
-  ::selection { background: #FCD34D; color: #0A1A2F; }
+  /* Preloader */
+  #preloader{ position:fixed; inset:0; z-index:10000; background:#070B14; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; }
+  @keyframes sunPulse{ 0%,100%{ transform:scale(1); filter:drop-shadow(0 0 12px rgba(255,176,32,.7)); } 50%{ transform:scale(1.12); filter:drop-shadow(0 0 30px rgba(255,176,32,1)); } }
+  .loader-sun{ animation:sunPulse 1.6s ease-in-out infinite; }
+  .loader-bar{ width:200px; height:3px; background:rgba(255,255,255,.1); border-radius:99px; overflow:hidden; }
+  .loader-bar-fill{ width:0%; height:100%; background:linear-gradient(90deg,#FFB020,#FF8A00); border-radius:99px; }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar { width: 11px; }
-  ::-webkit-scrollbar-track { background: #F1F5F9; }
-  ::-webkit-scrollbar-thumb { background: #94A3B8; border-radius: 99px; border: 3px solid #F1F5F9; }
-  ::-webkit-scrollbar-thumb:hover { background: #64748B; }
+  /* Buttons */
+  .btn-sun{ position:relative; overflow:hidden; background:linear-gradient(100deg,#FFB020,#FF8A00); color:#070B14; font-weight:700; transition:transform .3s ease, box-shadow .3s ease; box-shadow:0 8px 30px -8px rgba(255,150,20,.55); }
+  .btn-sun:hover{ transform:translateY(-2px); box-shadow:0 14px 40px -8px rgba(255,150,20,.7); }
+  .btn-sun::after{ content:''; position:absolute; top:0; left:-80%; width:50%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent); transform:skewX(-20deg); transition:left .6s ease; }
+  .btn-sun:hover::after{ left:130%; }
+  .btn-ghost{ border:1px solid rgba(255,255,255,.18); transition:border-color .3s ease, background .3s ease, transform .3s ease; }
+  .btn-ghost:hover{ border-color:rgba(255,176,32,.6); background:rgba(255,176,32,.06); transform:translateY(-2px); }
+
+  /* Cards */
+  .service-card{ position:relative; transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s ease; overflow:hidden; }
+  .service-card::before{ content:''; position:absolute; inset:0; background:radial-gradient(600px circle at var(--mx,50%) var(--my,0%), rgba(255,176,32,.10), transparent 45%); opacity:0; transition:opacity .4s ease; pointer-events:none; }
+  .service-card:hover{ transform:translateY(-8px); border-color:rgba(255,176,32,.45); }
+  .service-card:hover::before{ opacity:1; }
+  .service-card .card-arrow{ transition:transform .4s ease, background .4s ease, color .4s ease; }
+  .service-card:hover .card-arrow{ transform:translate(4px,-4px); background:#FFB020; color:#070B14; }
+
+  .project-card img{ transition:transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease; }
+  .project-card:hover img{ transform:scale(1.08); filter:brightness(1.05); }
+  .project-card .proj-overlay{ background:linear-gradient(to top, rgba(7,11,20,.95) 0%, rgba(7,11,20,.35) 55%, transparent 100%); }
+
+  /* Range slider */
+  input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:9999px; background:rgba(255,255,255,.1); outline:none; }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:24px; height:24px; border-radius:50%; background:#FFB020; border:4px solid #0B1120; box-shadow:0 0 0 3px rgba(255,176,32,.35), 0 0 24px rgba(255,176,32,.7); cursor:pointer; transition:transform .2s ease; }
+  input[type=range]::-webkit-slider-thumb:hover{ transform:scale(1.15); }
+  input[type=range]::-moz-range-thumb{ width:24px; height:24px; border-radius:50%; background:#FFB020; border:4px solid #0B1120; box-shadow:0 0 0 3px rgba(255,176,32,.35), 0 0 24px rgba(255,176,32,.7); cursor:pointer; }
+
+  /* FAQ */
+  .faq-item{ transition:border-color .3s ease, background .3s ease; }
+  .faq-item.open{ border-color:rgba(255,176,32,.4); background:rgba(255,176,32,.03); }
+  .faq-answer{ max-height:0; overflow:hidden; transition:max-height .5s cubic-bezier(.2,.8,.2,1); }
+  .faq-item.open .faq-answer{ max-height:320px; }
+  .faq-icon{ transition:transform .4s ease; }
+  .faq-item.open .faq-icon{ transform:rotate(45deg); color:#FFB020; }
+
+  /* WhatsApp float */
+  @keyframes pulseRing{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.9); opacity:0; } }
+  .wa-pulse::before{ content:''; position:absolute; inset:0; border-radius:50%; background:#25D366; animation:pulseRing 2s ease-out infinite; z-index:-1; }
+  .wa-tooltip{ opacity:0; transform:translateX(8px); transition:opacity .3s ease, transform .3s ease; pointer-events:none; }
+  .wa-wrap:hover .wa-tooltip{ opacity:1; transform:translateX(0); }
+
+  /* Timeline */
+  .step-line{ position:absolute; top:34px; left:calc(50% + 44px); width:calc(100% - 88px); height:2px; background:linear-gradient(90deg, rgba(255,176,32,.6), rgba(255,176,32,.08)); }
+  @media (max-width:1023px){ .step-line{ display:none; } }
+
+  /* Toast */
+  #toast{ position:fixed; bottom:100px; left:50%; transform:translate(-50%,20px); opacity:0; transition:opacity .35s ease, transform .35s ease; z-index:10002; pointer-events:none; }
+  #toast.show{ opacity:1; transform:translate(-50%,0); }
+
+  /* Progress bar */
+  #progress{ position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,#FFB020,#FF8A00); z-index:9999; box-shadow:0 0 12px rgba(255,176,32,.7); }
+
+  /* Reveal defaults (JS animates) */
+  .reveal{ opacity:0; }
+
+  /* Section label */
+  .sec-label{ display:inline-flex; align-items:center; gap:12px; }
+  .sec-label::before{ content:''; display:block; width:40px; height:1px; background:linear-gradient(90deg,#FFB020,transparent); }
+
+  /* Glow orbs */
+  .orb{ position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; }
+
+  /* Big outline text */
+  .outline-text{ -webkit-text-stroke:1px rgba(255,255,255,.08); color:transparent; }
+
+  input,textarea,select{ outline:none; }
+  input:focus,textarea:focus,select:focus{ border-color:rgba(255,176,32,.6) !important; box-shadow:0 0 0 3px rgba(255,176,32,.12); }
 </style>
 </head>
-<body class="font-sans bg-white text-navy-900 antialiased">
+<body class="font-body antialiased">
+<!-- Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
+<!-- Noise -->
+<div class="noise"></div>
+
+<!-- Scroll progress -->
+<div id="progress"></div>
+
+<!-- Toast -->
+<div id="toast" class="glass px-5 py-3 rounded-full text-sm font-medium flex items-center gap-2">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Copiado al portapapeles</span>
+</div>
+
+<!-- ============ PRELOADER ============ -->
+<div id="preloader">
+  <svg class="loader-sun" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round">
+    <circle cx="12" cy="12" r="4.5" fill="#FFB020" stroke="none"/>
+    <line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/>
+    <line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/>
+    <line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/><line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/>
+    <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/><line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/>
+  </svg>
+  <div class="font-display font-800 tracking-[0.35em] text-xl font-bold">SHELDA</div>
+  <div class="text-[11px] tracking-[0.4em] text-white/40 uppercase">vida solar</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
 <!-- ================= HEADER ================= -->
 <header class="fixed top-0 inset-x-0 z-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
@@ -172,8 +241,7 @@ tailwind.config = {
 </header>
 
 <!-- ================= HERO ================= -->
-<section id="inicio" class="relative overflow-hidden bg-navy-950 pt-32 pb-20 lg:pt-44 lg:pb-28">
-  <div class="absolute inset-0 grid-lines opacity-70"></div>
+<section id="inicio" class="relative min-h-screen flex items-center pt-[110px] pb-16 overflow-hidden">  <div class="absolute inset-0 grid-lines opacity-70"></div>
   <div class="glow h-[520px] w-[520px] bg-solar-500/25 -top-44 -right-24"></div>
   <div class="glow h-[420px] w-[420px] bg-eco-500/15 top-56 -left-40"></div>
   <div class="glow h-[300px] w-[300px] bg-blue-600/20 bottom-0 right-1/3"></div>
@@ -230,31 +298,38 @@ tailwind.config = {
       </div>
 
       <!-- Visual -->
-      <div class="reveal relative" style="transition-delay:.15s">
-        <div class="relative rounded-3xl border border-white/12 bg-white/[0.04] p-5 backdrop-blur-xl shadow-2xl shadow-black/40 sm:p-7">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-solar-400">Sistema residencial</p>
-              <p class="mt-1 font-display text-xl font-bold text-white">Arreglo fotovoltaico 6.6 kW</p>
-            </div>
-            <span class="rounded-full border border-eco-500/30 bg-eco-500/10 px-3 py-1 text-[11px] font-bold text-eco-400">EN LÍNEA</span>
-          </div>
+<!-- Right: Sun visual -->
+<div class="hero-anim relative flex items-center justify-center">
+  <div class="relative w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] xl:w-[500px] xl:h-[500px]">
+    <canvas id="sun-canvas" class="absolute inset-0"></canvas>
 
-          <!-- Panel array -->
-          <div class="mt-6 grid grid-cols-4 gap-2.5 sm:gap-3">
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:0s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.25s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.5s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.75s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.99s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.24s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.49s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.74s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.99s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:2.24s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:2.49s"></div>
-            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:2.74s"></div>
-          </div>
+    <!-- rotating ring text -->
+    <svg class="absolute animate-spin-slow" style="inset:-46px;" viewBox="0 0 200 200">
+      <defs>
+        <path id="circlePath" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/>
+      </defs>
+      <text fill="rgba(255,255,255,.4)" font-size="8.2" letter-spacing="3.5" font-family="Sora,sans-serif" font-weight="600">
+        <textPath href="#circlePath">ENERGÍA SOLAR • SHELDA VIDA SOLAR • VENTA • INSTALACIÓN • MANTENIMIENTO •</textPath>
+      </text>
+    </svg>
+
+    <!-- floating cards -->
+    <div class="floaty absolute -left-6 sm:-left-14 top-8 glass rounded-2xl px-5 py-4 shadow-2xl">
+      <div class="font-display font-bold text-2xl text-sun-400">98%</div>
+      <div class="text-[11px] text-white/55 tracking-wide">Clientes satisfechos</div>
+    </div>
+    <div class="floaty-2 absolute -right-2 sm:-right-10 bottom-10 glass rounded-2xl px-5 py-4 shadow-2xl">
+      <div class="font-display font-bold text-2xl text-sun-400">+12 MW</div>
+      <div class="text-[11px] text-white/55 tracking-wide">Potencia instalada</div>
+    </div>
+  </div>
+</div>
+
+<!-- scroll indicator -->
+<div class="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/35">
+  <span class="text-[10px] tracking-[0.35em] uppercase">Desliza</span>
+  <div class="w-[1px] h-10 bg-gradient-to-b from-sun-500 to-transparent"></div>
+</div>
 
           <div class="mt-6 grid grid-cols-3 gap-3">
             <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 text-center">
@@ -1398,6 +1473,74 @@ tailwind.config = {
   calcBill();
   calcLoads();
 })();
+</script>
+<!-- Canvas Sun Animation -->
+<script>
+  const canvas = document.getElementById('sun-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const sunRadius = Math.min(canvas.width, canvas.height) / 4;
+    
+    function drawSun() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Sun rays
+      ctx.strokeStyle = 'rgba(255, 176, 32, 0.3)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 8; i++) {
+        const angle = (i * Math.PI) / 4;
+        ctx.beginPath();
+        ctx.moveTo(
+          centerX + Math.cos(angle) * (sunRadius + 20),
+          centerY + Math.sin(angle) * (sunRadius + 20)
+        );
+        ctx.lineTo(
+          centerX + Math.cos(angle) * (sunRadius + 50),
+          centerY + Math.sin(angle) * (sunRadius + 50)
+        );
+        ctx.stroke();
+      }
+      
+      // Sun circle
+      ctx.fillStyle = '#FFB020';
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, sunRadius, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Glow
+      const gradient = ctx.createRadialGradient(centerX, centerY, sunRadius, centerX, centerY, sunRadius + 30);
+      gradient.addColorStop(0, 'rgba(255, 176, 32, 0.4)');
+      gradient.addColorStop(1, 'rgba(255, 176, 32, 0)');
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, sunRadius + 30, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    
+    drawSun();
+    window.addEventListener('resize', () => {
+      const newRect = canvas.getBoundingClientRect();
+      canvas.width = newRect.width;
+      canvas.height = newRect.height;
+      drawSun();
+    });
+  }
+
+  // Preloader
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.style.opacity = '0';
+      preloader.style.pointerEvents = 'none';
+      preloader.style.transition = 'opacity 0.5s ease';
+    }
+  });
 </script>
 </body>
 </html>

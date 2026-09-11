@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -31,8 +30,8 @@ tailwind.config = {
 </script>
 <style>
   html{scroll-behavior:smooth}
-  body{font-family:'Inter',sans-serif;color:#0E2C4D;background:#fff;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,h4,.font-display{font-family:'Plus Jakarta Sans',sans-serif}
+html,body{height:100%;width:100%}
+body{font-family:'Inter',sans-serif;color:#0E2C4D;background:#fff;-webkit-font-smoothing:antialiased}  h1,h2,h3,h4,.font-display{font-family:'Plus Jakarta Sans',sans-serif}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   .delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
@@ -118,6 +117,7 @@ tailwind.config = {
         <a class="nav-link hover:text-white" href="#servicios">Servicios</a>
         <a class="nav-link hover:text-white" href="#porque">Por qué SHELDA</a>
         <a class="nav-link hover:text-white" href="#proceso">Proceso</a>
+        <a class="nav-link hover:text-white" href="#calculadora">Calculadora</a>
         <a class="nav-link hover:text-white" href="#proyectos">Proyectos</a>
         <a class="nav-link hover:text-white" href="#faq">Preguntas</a>
       </nav>
@@ -136,6 +136,7 @@ tailwind.config = {
         <a class="py-3 px-3 rounded-lg hover:bg-white/5" href="#servicios">Servicios</a>
         <a class="py-3 px-3 rounded-lg hover:bg-white/5" href="#porque">Por qué SHELDA</a>
         <a class="py-3 px-3 rounded-lg hover:bg-white/5" href="#proceso">Proceso</a>
+        <a class="py-3 px-3 rounded-lg hover:bg-white/5" href="#calculadora">Calculadora</a>
         <a class="py-3 px-3 rounded-lg hover:bg-white/5" href="#proyectos">Proyectos</a>
         <a class="py-3 px-3 rounded-lg hover:bg-white/5" href="#faq">Preguntas</a>
         <a class="mt-2 btn-sun text-center text-brand-950 font-semibold py-3 rounded-xl" href="#calculadora">Calcular mi sistema</a>
@@ -568,8 +569,7 @@ tailwind.config = {
             </div>
             <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
               <p class="text-[11px] uppercase tracking-wider text-brand-200">Ahorro anual est.</p>
-              <p class="font-display font-extrabold text-2xl mt-1 text-leaf-400">$<span id="rSave" class="result-num">60,000</span></p>
-            </div>
+<p class="font-display font-extrabold text-xl mt-1 text-leaf-400 whitespace-nowrap">$<span id="rSave" class="result-num">60,000</span></p>            </div>
           </div>
 
           <div class="mt-5 flex items-center gap-3 bg-leaf-500/15 border border-leaf-400/30 rounded-2xl p-4">
@@ -793,8 +793,7 @@ tailwind.config = {
 <script>
 (function(){
   /* ---------- Config ---------- */
-  const CFG = { hsp: 5.6, perf: 0.80, panelW: 550, panelArea: 2.6, co2: 0.438, wa: '524421234567', treesPerTon: 46 };
-  const $ = s => document.querySelector(s);
+const CFG = { hsp: 5.6, perf: 0.80, panelW: 720, panelArea: 3.5, co2: 0.438, wa: '524421234567', treesPerTon: 46 };  const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   const fmt = (n, d=0) => n.toLocaleString('es-MX',{minimumFractionDigits:d, maximumFractionDigits:d});
 
@@ -815,7 +814,7 @@ tailwind.config = {
   $$('#mobileMenu a').forEach(a=>a.addEventListener('click', ()=> mobileMenu.classList.add('hidden')));
 
   // Scroll spy
-  const sections = ['servicios','porque','proceso','proyectos','faq'].map(id=>document.getElementById(id));
+  const sections = ['servicios','porque','proceso','calculadora','proyectos','faq'].map(id=>document.getElementById(id));
   const links = $$('.nav-link');
   const spy = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){ links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+e.target.id)); } });

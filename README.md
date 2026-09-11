@@ -743,7 +743,7 @@ body {
           <div><p class="text-xs uppercase tracking-wider text-brand-200">WhatsApp</p><p class="font-display font-bold text-lg">+52 442 334 4713</p><p class="text-xs text-brand-200/80">Respuesta inmediata</p></div>
           <svg class="ml-auto text-brand-200 group-hover:translate-x-1 transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="tel:+524422219667" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
+        <a href="tel:+524423344713" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
           <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 grid place-items-center text-white">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
           </div>
@@ -803,7 +803,7 @@ body {
 <script>
 (function(){
   /* ---------- Config ---------- */
-const CFG = { hsp: 5.6, perf: 0.80, panelW: 720, panelArea: 3.5, co2: 0.438, wa: '524422219667', treesPerTon: 46 };  const $ = s => document.querySelector(s);
+const CFG = { hsp: 5.6, perf: 0.80, panelW: 720, panelArea: 3.5, co2: 0.438, wa: '524423344713', treesPerTon: 46 };  const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   const fmt = (n, d=0) => n.toLocaleString('es-MX',{minimumFractionDigits:d, maximumFractionDigits:d});
 

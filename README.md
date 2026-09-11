@@ -176,17 +176,17 @@ body {
 
       <!-- CONTACT (inicio) -->
       <div class="mt-8 flex flex-wrap gap-3" id="heroContact">
-        <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20me%20interesa%20un%20sistema%20fotovoltaico.%20%C2%BFMe%20pueden%20asesorar%3F" target="_blank" rel="noopener" class="wa-btn inline-flex items-center gap-2.5 text-white font-semibold px-5 py-3.5 rounded-xl transition">
+        <a href="https://wa.me/524423344713?text=Hola%20SHELDA%2C%20me%20interesa%20un%20sistema%20fotovoltaico.%20%C2%BFMe%20pueden%20asesorar%3F" target="_blank" rel="noopener" class="wa-btn inline-flex items-center gap-2.5 text-white font-semibold px-5 py-3.5 rounded-xl transition">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4A9.9 9.9 0 0 1 2.1 12C2.1 6.5 6.5 2 12 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.5-4.4 9.9-9.9 9.9zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
           WhatsApp
         </a>
-        <a href="tel:+524421234567" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold px-5 py-3.5 rounded-xl transition">
+        <a href="tel:+524422219667" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold px-5 py-3.5 rounded-xl transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
           442 123 4567
         </a>
-        <a href="mailto:contacto@shelda.mx" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold px-5 py-3.5 rounded-xl transition">
+        <a href="mailto:sheldaingenieria@gmail.com" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold px-5 py-3.5 rounded-xl transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          contacto@shelda.mx
+          sheldaingenieria@gmail.com
         </a>
       </div>
 
@@ -736,25 +736,25 @@ body {
         </div>
       </div>
       <div class="grid sm:grid-cols-3 lg:grid-cols-1 gap-4 reveal delay-2">
-        <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20me%20interesa%20un%20sistema%20fotovoltaico.%20%C2%BFMe%20pueden%20asesorar%3F" target="_blank" rel="noopener" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
+        <a href="https://wa.me/524423344713?text=Hola%20SHELDA%2C%20me%20interesa%20un%20sistema%20fotovoltaico.%20%C2%BFMe%20pueden%20asesorar%3F" target="_blank" rel="noopener" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
           <div class="relative w-14 h-14 shrink-0 rounded-2xl wa-btn grid place-items-center text-white"><span class="ring-anim"></span>
             <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4A9.9 9.9 0 0 1 2.1 12C2.1 6.5 6.5 2 12 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.5-4.4 9.9-9.9 9.9zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
           </div>
           <div><p class="text-xs uppercase tracking-wider text-brand-200">WhatsApp</p><p class="font-display font-bold text-lg">+52 442 123 4567</p><p class="text-xs text-brand-200/80">Respuesta inmediata</p></div>
           <svg class="ml-auto text-brand-200 group-hover:translate-x-1 transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="tel:+524421234567" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
+        <a href="tel:+524422219667" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
           <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 grid place-items-center text-white">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
           </div>
           <div><p class="text-xs uppercase tracking-wider text-brand-200">Llámanos</p><p class="font-display font-bold text-lg">(442) 123 4567</p><p class="text-xs text-brand-200/80">Lun – Sáb en horario laboral</p></div>
           <svg class="ml-auto text-brand-200 group-hover:translate-x-1 transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="mailto:contacto@shelda.mx?subject=Cotizaci%C3%B3n%20sistema%20fotovoltaico" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
+        <a href="mailto:sheldaingenieria@gmail.com?subject=Cotizaci%C3%B3n%20sistema%20fotovoltaico" class="card-hover group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-5">
           <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-sun-400 to-sun-600 grid place-items-center text-brand-950">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
           </div>
-          <div><p class="text-xs uppercase tracking-wider text-brand-200">Correo</p><p class="font-display font-bold text-lg break-all">contacto@shelda.mx</p><p class="text-xs text-brand-200/80">Envíanos tu recibo y te cotizamos</p></div>
+          <div><p class="text-xs uppercase tracking-wider text-brand-200">Correo</p><p class="font-display font-bold text-lg break-all">sheldaingenieria@gmail.com</p><p class="text-xs text-brand-200/80">Envíanos tu recibo y te cotizamos</p></div>
           <svg class="ml-auto text-brand-200 group-hover:translate-x-1 transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -785,9 +785,9 @@ body {
     <div>
       <p class="font-display font-bold text-white">Contacto</p>
       <ul class="mt-4 space-y-2 text-sm">
-        <li><a class="hover:text-white" href="https://wa.me/524421234567" target="_blank" rel="noopener">WhatsApp: +52 442 123 4567</a></li>
-        <li><a class="hover:text-white" href="tel:+524421234567">Tel: (442) 123 4567</a></li>
-        <li><a class="hover:text-white" href="mailto:contacto@shelda.mx">contacto@shelda.mx</a></li>
+        <li><a class="hover:text-white" href="https://wa.me/524423344713" target="_blank" rel="noopener">WhatsApp: +52 442 123 4567</a></li>
+        <li><a class="hover:text-white" href="tel:+524422219667">Tel: (442) 123 4567</a></li>
+        <li><a class="hover:text-white" href="mailto:sheldaingenieria@gmail.com">sheldaingenieria@gmail.com</a></li>
         <li class="text-brand-200/70">Santiago de Querétaro, Qro.</li>
       </ul>
     </div>
@@ -803,7 +803,7 @@ body {
 <script>
 (function(){
   /* ---------- Config ---------- */
-const CFG = { hsp: 5.6, perf: 0.80, panelW: 720, panelArea: 3.5, co2: 0.438, wa: '524421234567', treesPerTon: 46 };  const $ = s => document.querySelector(s);
+const CFG = { hsp: 5.6, perf: 0.80, panelW: 720, panelArea: 3.5, co2: 0.438, wa: '524422219667', treesPerTon: 46 };  const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   const fmt = (n, d=0) => n.toLocaleString('es-MX',{minimumFractionDigits:d, maximumFractionDigits:d});
 

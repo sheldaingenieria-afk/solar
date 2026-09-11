@@ -1,781 +1,489 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHELDA vida solar — Venta, Instalación y Mantenimiento de Paneles Solares</title>
-<meta name="description" content="SHELDA vida solar: 10 años de experiencia en venta, instalación y mantenimiento de sistemas fotovoltaicos. Cotiza gratis por teléfono, correo o WhatsApp.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHELDA · Sistemas Fotovoltaicos en Querétaro | Venta, Instalación y Mantenimiento</title>
+<meta name="description" content="SHELDA: 12 años de experiencia en energía solar en Querétaro. Diseño, venta, instalación y mantenimiento de sistemas fotovoltaicos residenciales y comerciales.">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
       colors: {
-        ink: '#070B14',
-        panel: '#0B1120',
-        card: '#0D1424',
-        sun: {
-          300:'#FFD76A', 400:'#FFC233', 500:'#FFB020', 600:'#F59E0B', 700:'#E8820C'
-        }
+        navy: {50:'#EFF6FF',100:'#DBEAFE',700:'#17395F',800:'#0F2745',900:'#0A1A2F',950:'#050E1C'},
+        solar: {50:'#FFFBEB',100:'#FEF3C7',200:'#FDE68A',300:'#FCD34D',400:'#FBBF24',500:'#F59E0B',600:'#D97706',700:'#B45309'},
+        eco: {400:'#34D399',500:'#10B981',600:'#059669'}
       },
       fontFamily: {
-        display: ['Sora','sans-serif'],
-        body: ['Inter','sans-serif']
+        sans: ['Inter','system-ui','-apple-system','Segoe UI','sans-serif'],
+        display: ['Sora','Inter','system-ui','sans-serif']
+      },
+      boxShadow: {
+        'soft': '0 10px 40px -12px rgba(10,26,47,0.18)',
+        'card': '0 4px 24px -6px rgba(10,26,47,0.10)'
       }
     }
   }
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 96px;
-}
-body {
-  background: #070B14;
-  color: #E7ECF5;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-}
-::selection { background: #FFB020; color: #070B14; }
+  html { scroll-behavior: smooth; }
+  body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  section { scroll-margin-top: 110px; }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #070B14; }
-::-webkit-scrollbar-thumb { background: linear-gradient(#FFB020, #E8820C); border-radius: 8px; border: 2px solid #070B14; }
+  /* Reveal animations */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
 
-/* Custom cursor - simplified */
-@media (pointer: fine) {
-  * { cursor: none !important; }
-}
-.cursor-dot, .cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 10001;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-}
-.cursor-dot {
-  width: 6px; height: 6px;
-  background: #FFB020;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(255,176,32,.5);
-  transition: width .25s ease, height .25s ease, border-color .25s ease, background .25s ease;
-}
-.cursor-ring.hovered {
-  width: 56px; height: 56px;
-  border-color: rgba(255,176,32,.85);
-  background: rgba(255,176,32,.06);
-}
-@media (pointer: coarse) {
-  .cursor-dot, .cursor-ring { display: none; }
-}
-
-/* Gradient text */
-.text-grad {
-  background: linear-gradient(100deg, #FFE9B0 0%, #FFB020 45%, #FF8A00 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Glass */
-.glass {
-  background: rgba(13,20,36,.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-/* Nav */
-#nav {
-  transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
-  border-bottom: 1px solid transparent;
-}
-#nav.nav-scrolled {
-  background: rgba(7,11,20,.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,.07);
-}
-.nav-link { position: relative; }
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -6px;
-  width: 0; height: 2px;
-  background: linear-gradient(90deg, #FFB020, #FF8A00);
-  transition: width .3s ease;
-  border-radius: 2px;
-}
-.nav-link:hover::after { width: 100%; }
-
-/* Marquee */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 40s linear infinite;
-}
-.marquee-track:hover { animation-play-state: paused; }
-@keyframes marquee { to { transform: translateX(-50%); } }
-
-/* Rotating ring text */
-@keyframes spin-slow { to { transform: rotate(360deg); } }
-.animate-spin-slow {
-  animation: spin-slow 35s linear infinite;
-  transform-origin: center;
-  will-change: transform;
-}
-
-/* Float - simplified */
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.floaty { animation: floaty 7s ease-in-out infinite; will-change: transform; }
-.floaty-2 { animation: floaty 8s ease-in-out infinite; animation-delay: 1.5s; will-change: transform; }
-
-/* Preloader */
-#preloader {
-  position: fixed; inset: 0; z-index: 10000;
-  background: #070B14;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 24px;
-  transition: opacity .5s ease;
-}
-#preloader.fade-out { opacity: 0; pointer-events: none; }
-@keyframes sunPulse {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,176,32,.6)); }
-  50% { transform: scale(1.08); filter: drop-shadow(0 0 24px rgba(255,176,32,.9)); }
-}
-.loader-sun { animation: sunPulse 1.8s ease-in-out infinite; }
-.loader-bar {
-  width: 180px; height: 3px;
-  background: rgba(255,255,255,.1);
-  border-radius: 99px; overflow: hidden;
-}
-.loader-bar-fill {
-  width: 0%; height: 100%;
-  background: linear-gradient(90deg, #FFB020, #FF8A00);
-  border-radius: 99px;
-  transition: width .4s ease;
-}
-
-/* Buttons */
-.btn-sun {
-  position: relative; overflow: hidden;
-  background: linear-gradient(100deg, #FFB020, #FF8A00);
-  color: #070B14; font-weight: 700;
-  transition: transform .25s ease, box-shadow .25s ease;
-  box-shadow: 0 8px 28px -8px rgba(255,150,20,.5);
-}
-.btn-sun:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 36px -8px rgba(255,150,20,.65);
-}
-.btn-sun::after {
-  content: '';
-  position: absolute; top: 0; left: -80%;
-  width: 50%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,.4), transparent);
-  transform: skewX(-20deg);
-  transition: left .5s ease;
-}
-.btn-sun:hover::after { left: 130%; }
-
-.btn-ghost {
-  border: 1px solid rgba(255,255,255,.18);
-  transition: border-color .25s ease, background .25s ease, transform .25s ease;
-}
-.btn-ghost:hover {
-  border-color: rgba(255,176,32,.55);
-  background: rgba(255,176,32,.05);
-  transform: translateY(-2px);
-}
-
-/* Cards */
-.service-card {
-  position: relative;
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease;
-  overflow: hidden;
-}
-.service-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(500px circle at var(--mx,50%) var(--my,0%), rgba(255,176,32,.08), transparent 40%);
-  opacity: 0;
-  transition: opacity .3s ease;
-  pointer-events: none;
-}
-.service-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255,176,32,.4);
-}
-.service-card:hover::before { opacity: 1; }
-.service-card .card-arrow {
-  transition: transform .3s ease, background .3s ease, color .3s ease;
-}
-.service-card:hover .card-arrow {
-  transform: translate(3px, -3px);
-  background: #FFB020;
-  color: #070B14;
-}
-
-.project-card img {
-  transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .4s ease;
-}
-.project-card:hover img {
-  transform: scale(1.06);
-  filter: brightness(1.05);
-}
-.project-card .proj-overlay {
-  background: linear-gradient(to top, rgba(7,11,20,.92) 0%, rgba(7,11,20,.3) 55%, transparent 100%);
-}
-
-/* Range slider */
-input[type=range] {
-  -webkit-appearance: none; appearance: none;
-  width: 100%; height: 6px;
-  border-radius: 9999px;
-  background: rgba(255,255,255,.1);
-  outline: none;
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: #FFB020;
-  border: 4px solid #0B1120;
-  box-shadow: 0 0 0 3px rgba(255,176,32,.3), 0 0 20px rgba(255,176,32,.6);
-  cursor: pointer;
-  transition: transform .2s ease;
-}
-input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.12); }
-input[type=range]::-moz-range-thumb {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: #FFB020;
-  border: 4px solid #0B1120;
-  box-shadow: 0 0 0 3px rgba(255,176,32,.3), 0 0 20px rgba(255,176,32,.6);
-  cursor: pointer;
-}
-
-/* FAQ */
-.faq-item { transition: border-color .25s ease, background .25s ease; }
-.faq-item.open { border-color: rgba(255,176,32,.35); background: rgba(255,176,32,.02); }
-.faq-answer {
-  max-height: 0; overflow: hidden;
-  transition: max-height .4s cubic-bezier(.2,.8,.2,1);
-}
-.faq-item.open .faq-answer { max-height: 320px; }
-.faq-icon { transition: transform .3s ease; }
-.faq-item.open .faq-icon { transform: rotate(45deg); color: #FFB020; }
-
-/* WhatsApp float */
-@keyframes pulseRing {
-  0% { transform: scale(1); opacity: .5; }
-  100% { transform: scale(1.8); opacity: 0; }
-}
-.wa-pulse::before {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  background: #25D366;
-  animation: pulseRing 2.5s ease-out infinite;
-  z-index: -1;
-}
-.wa-tooltip {
-  opacity: 0; transform: translateX(6px);
-  transition: opacity .25s ease, transform .25s ease;
-  pointer-events: none;
-}
-.wa-wrap:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
-
-/* Timeline */
-.step-line {
-  position: absolute;
-  top: 34px; left: calc(50% + 44px);
-  width: calc(100% - 88px); height: 2px;
-  background: linear-gradient(90deg, rgba(255,176,32,.5), rgba(255,176,32,.06));
-}
-@media (max-width: 1023px) { .step-line { display: none; } }
-
-/* Toast */
-#toast {
-  position: fixed; bottom: 100px; left: 50%;
-  transform: translate(-50%, 16px);
-  opacity: 0;
-  transition: opacity .3s ease, transform .3s ease;
-  z-index: 10002; pointer-events: none;
-}
-#toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-/* Progress bar */
-#progress {
-  position: fixed; top: 0; left: 0;
-  height: 3px; width: 0%;
-  background: linear-gradient(90deg, #FFB020, #FF8A00);
-  z-index: 9999;
-  box-shadow: 0 0 10px rgba(255,176,32,.6);
-  will-change: width;
-}
-
-/* Reveal - using CSS for performance */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Section label */
-.sec-label {
-  display: inline-flex;
-  align-items: center; gap: 12px;
-}
-.sec-label::before {
-  content: '';
-  display: block;
-  width: 36px; height: 1px;
-  background: linear-gradient(90deg, #FFB020, transparent);
-}
-
-/* Glow orbs */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  opacity: .7;
-}
-
-/* Big outline text */
-.outline-text {
-  -webkit-text-stroke: 1px rgba(255,255,255,.06);
-  color: transparent;
-}
-
-input, textarea, select { outline: none; }
-input:focus, textarea:focus, select:focus {
-  border-color: rgba(255,176,32,.55) !important;
-  box-shadow: 0 0 0 3px rgba(255,176,32,.1);
-}
-
-/* Reduce motion preference */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  /* Background grid */
+  .grid-lines {
+    background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 58px 58px;
+    mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 78%);
   }
-  .reveal { opacity: 1; transform: none; }
-}
+  .grid-lines-light {
+    background-image: linear-gradient(rgba(10,26,47,.045) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(10,26,47,.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Glow blobs */
+  .glow { position: absolute; border-radius: 9999px; filter: blur(100px); pointer-events: none; }
+
+  /* Floating */
+  @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
+  .floaty { animation: floaty 6.5s ease-in-out infinite; }
+
+  /* Solar panel sheen */
+  .panel-cell { position: relative; overflow: hidden; }
+  .panel-cell::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,.42) 50%, transparent 68%);
+    transform: translateX(-130%);
+    animation: sheen 5s ease-in-out infinite;
+  }
+  @keyframes sheen { 0% { transform: translateX(-130%);} 55%,100% { transform: translateX(130%);} }
+
+  /* Range sliders */
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px; border-radius: 999px;
+    background: #E2E8F0; outline: none; cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: linear-gradient(145deg,#FBBF24,#D97706);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 10px rgba(217,119,6,.55);
+    cursor: pointer;
+    transition: transform .15s ease;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); }
+  input[type="range"]::-moz-range-thumb {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #F59E0B; border: 3px solid #fff;
+    box-shadow: 0 2px 10px rgba(217,119,6,.55); cursor: pointer;
+  }
+
+  /* WhatsApp pulse */
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,.6); }
+    70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+  .wa-pulse { animation: pulseRing 2.4s infinite; }
+
+  .tab-active { background: linear-gradient(135deg,#0A1A2F,#17395F); color: #fff; box-shadow: 0 10px 30px -10px rgba(10,26,47,.6); }
+
+  .text-gradient {
+    background: linear-gradient(100deg,#FBBF24 0%,#F59E0B 45%,#FCD34D 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  ::selection { background: #FCD34D; color: #0A1A2F; }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 11px; }
+  ::-webkit-scrollbar-track { background: #F1F5F9; }
+  ::-webkit-scrollbar-thumb { background: #94A3B8; border-radius: 99px; border: 3px solid #F1F5F9; }
+  ::-webkit-scrollbar-thumb:hover { background: #64748B; }
 </style>
 </head>
-<body class="font-body antialiased">
+<body class="font-sans bg-white text-navy-900 antialiased">
 
-<!-- Cursor -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<!-- ================= HEADER ================= -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <nav class="mt-3 sm:mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-navy-900/75 px-4 sm:px-5 py-3 backdrop-blur-xl shadow-lg shadow-black/25">
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <span class="relative grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-solar-400 to-solar-600 shadow-lg shadow-solar-600/30">
+          <svg viewBox="0 0 24 24" class="h-6 w-6 text-navy-950" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span class="block font-display text-lg font-extrabold tracking-tight text-white">SHELDA</span>
+          <span class="block text-[10px] font-semibold uppercase tracking-[0.18em] text-solar-400/90">Energía Solar · QRO</span>
+        </span>
+      </a>
 
-<!-- Scroll progress -->
-<div id="progress"></div>
+      <div class="hidden items-center gap-1 lg:flex">
+        <a href="#servicios" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white">Servicios</a>
+        <a href="#nosotros" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white">Nosotros</a>
+        <a href="#calculadora" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white">Calculadora</a>
+        <a href="#proceso" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white">Proceso</a>
+        <a href="#contacto" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white">Contacto</a>
+      </div>
 
-<!-- Toast -->
-<div id="toast" class="glass px-5 py-3 rounded-full text-sm font-medium flex items-center gap-2">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-  <span id="toastMsg">Copiado al portapapeles</span>
-</div>
-
-<!-- ============ PRELOADER ============ -->
-<div id="preloader">
-  <svg class="loader-sun" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round">
-    <circle cx="12" cy="12" r="4.5" fill="#FFB020" stroke="none"/>
-    <line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/>
-    <line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/>
-    <line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/><line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/>
-    <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/><line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/>
-  </svg>
-  <div class="font-display font-800 tracking-[0.35em] text-lg font-bold">SHELDA</div>
-  <div class="text-[11px] tracking-[0.4em] text-white/40 uppercase">vida solar</div>
-  <div class="loader-bar"><div class="loader-bar-fill" id="loaderFill"></div></div>
-</div>
-
-<!-- ============ NAVBAR ============ -->
-<header id="nav" class="fixed top-0 left-0 w-full z-[100]">
-  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[84px] flex items-center justify-between">
-    <a href="#inicio" class="flex items-center gap-3 group">
-      <span class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-sun-400 to-sun-700 shadow-[0_0_22px_rgba(255,176,32,.4)]">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#070B14" stroke-width="2.2" stroke-linecap="round">
-          <circle cx="12" cy="12" r="4" fill="#070B14" stroke="none"/>
-          <line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
-          <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
-          <line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/>
-          <line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/>
-        </svg>
-      </span>
-      <span class="leading-none">
-        <span class="block font-display font-bold text-lg tracking-[0.18em]">SHELDA</span>
-        <span class="block text-[10px] tracking-[0.42em] text-sun-500 uppercase">vida solar</span>
-      </span>
-    </a>
-
-    <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-white/75">
-      <a href="#nosotros" class="nav-link hover:text-white transition-colors">Nosotros</a>
-      <a href="#servicios" class="nav-link hover:text-white transition-colors">Servicios</a>
-      <a href="#calculadora" class="nav-link hover:text-white transition-colors">Calculadora</a>
-      <a href="#proyectos" class="nav-link hover:text-white transition-colors">Proyectos</a>
-      <a href="#contacto" class="nav-link hover:text-white transition-colors">Contacto</a>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20me%20interesa%20cotizar%20un%20sistema%20fotovoltaico." target="_blank" rel="noopener"
+           class="hidden items-center gap-2 rounded-xl bg-gradient-to-r from-solar-400 to-solar-500 px-4 py-2.5 text-sm font-bold text-navy-950 shadow-lg shadow-solar-500/25 transition hover:brightness-105 hover:shadow-solar-500/40 sm:inline-flex">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 01-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 015.82 2.41 8.16 8.16 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+          WhatsApp
+        </a>
+        <button id="menuBtn" aria-label="Menú" class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 lg:hidden">
+          <svg id="menuIcon" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
     </nav>
 
-    <div class="hidden lg:flex items-center gap-4">
-      <a href="tel:+525584213690" class="flex items-center gap-2 text-sm text-white/75 hover:text-sun-400 transition-colors">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +52 (55) 8421 3690
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden lg:hidden mt-2 rounded-2xl border border-white/10 bg-navy-900/95 p-3 backdrop-blur-xl shadow-2xl">
+      <a href="#servicios" class="mobile-link block rounded-xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10">Servicios</a>
+      <a href="#nosotros" class="mobile-link block rounded-xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10">Nosotros</a>
+      <a href="#calculadora" class="mobile-link block rounded-xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10">Calculadora Solar</a>
+      <a href="#proceso" class="mobile-link block rounded-xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10">Proceso</a>
+      <a href="#contacto" class="mobile-link block rounded-xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10">Contacto</a>
+      <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20me%20interesa%20cotizar%20un%20sistema%20fotovoltaico." target="_blank" rel="noopener"
+         class="mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-solar-400 to-solar-500 px-4 py-3 text-sm font-bold text-navy-950">
+        Escríbenos por WhatsApp
       </a>
-      <a href="https://wa.me/5215584213690?text=Hola%20SHELDA%2C%20quiero%20una%20cotizaci%C3%B3n%20gratuita%20de%20paneles%20solares." target="_blank" rel="noopener" class="btn-sun px-6 py-3 rounded-full text-sm">Cotizar gratis</a>
     </div>
-
-    <!-- Hamburger -->
-    <button id="menuBtn" class="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-[6px] rounded-xl border border-white/15">
-      <span class="menu-line block w-5 h-[2px] bg-white transition-all duration-300"></span>
-      <span class="menu-line block w-5 h-[2px] bg-white transition-all duration-300"></span>
-      <span class="menu-line block w-5 h-[2px] bg-white transition-all duration-300"></span>
-    </button>
   </div>
 </header>
 
-<!-- Mobile menu -->
-<div id="mobileMenu" class="fixed inset-0 z-[99] bg-ink/95 backdrop-blur-xl flex-col items-center justify-center gap-8 hidden">
-  <a href="#nosotros" class="mob-link font-display text-3xl font-semibold text-white/85 hover:text-sun-400 transition-colors">Nosotros</a>
-  <a href="#servicios" class="mob-link font-display text-3xl font-semibold text-white/85 hover:text-sun-400 transition-colors">Servicios</a>
-  <a href="#calculadora" class="mob-link font-display text-3xl font-semibold text-white/85 hover:text-sun-400 transition-colors">Calculadora</a>
-  <a href="#proyectos" class="mob-link font-display text-3xl font-semibold text-white/85 hover:text-sun-400 transition-colors">Proyectos</a>
-  <a href="#contacto" class="mob-link font-display text-3xl font-semibold text-white/85 hover:text-sun-400 transition-colors">Contacto</a>
-  <a href="https://wa.me/5215584213690" target="_blank" rel="noopener" class="mob-link btn-sun px-8 py-4 rounded-full mt-4">Cotizar por WhatsApp</a>
-</div>
+<!-- ================= HERO ================= -->
+<section id="inicio" class="relative overflow-hidden bg-navy-950 pt-32 pb-20 lg:pt-44 lg:pb-28">
+  <div class="absolute inset-0 grid-lines opacity-70"></div>
+  <div class="glow h-[520px] w-[520px] bg-solar-500/25 -top-44 -right-24"></div>
+  <div class="glow h-[420px] w-[420px] bg-eco-500/15 top-56 -left-40"></div>
+  <div class="glow h-[300px] w-[300px] bg-blue-600/20 bottom-0 right-1/3"></div>
 
-<!-- ============ HERO ============ -->
-<section id="inicio" class="relative min-h-screen flex items-center pt-[110px] pb-16 overflow-hidden">
-  <div class="orb w-[450px] h-[450px] bg-sun-600/12 -top-32 -left-32"></div>
-  <div class="orb w-[350px] h-[350px] bg-sun-500/08 bottom-0 right-0"></div>
-
-  <!-- faint grid -->
-  <div class="absolute inset-0 opacity-[0.04]" style="background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:72px 72px;"></div>
-
-  <div class="relative max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-14 items-center w-full">
-    <!-- Left -->
-    <div>
-      <div class="hero-anim inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs font-medium tracking-wide text-sun-300 mb-7">
-        <span class="w-2 h-2 rounded-full bg-sun-500 animate-pulse"></span>
-        10 AÑOS LIDERANDO LA ENERGÍA SOLAR
-      </div>
-
-      <h1 class="hero-anim font-display font-extrabold text-[42px] leading-[1.05] sm:text-6xl xl:text-[72px] tracking-tight">
-        Tu energía,<br>
-        <span class="text-grad">el sol.</span>
-      </h1>
-
-      <p class="hero-anim mt-7 text-white/60 text-lg max-w-lg leading-relaxed">
-        Diseñamos, instalamos y mantenemos sistemas fotovoltaicos de alto rendimiento para hogares y empresas. Reduce tu recibo de luz hasta un <span class="text-sun-400 font-semibold">95%</span> con los expertos del mercado.
-      </p>
-
-      <div class="hero-anim mt-9 flex flex-wrap items-center gap-4">
-        <a href="#calculadora" class="btn-sun px-8 py-4 rounded-full text-sm flex items-center gap-2">
-          Calcula tu ahorro
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="https://wa.me/5215584213690?text=Hola%20SHELDA%2C%20quiero%20una%20cotizaci%C3%B3n%20gratuita." target="_blank" rel="noopener" class="btn-ghost px-8 py-4 rounded-full text-sm font-semibold flex items-center gap-2">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp directo
-        </a>
-      </div>
-
-      <div class="hero-anim mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-white/45">
-        <span class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Garantía de 25 años</span>
-        <span class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Equipos Tier 1</span>
-        <span class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Instaladores certificados</span>
-      </div>
-    </div>
-
-    <!-- Right: Sun visual -->
-    <div class="hero-anim relative flex items-center justify-center">
-      <div class="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] xl:w-[480px] xl:h-[480px]">
-        <canvas id="sun-canvas" class="absolute inset-0"></canvas>
-
-        <!-- rotating ring text -->
-        <svg class="absolute animate-spin-slow" style="inset:-40px;" viewBox="0 0 200 200">
-          <defs><path id="circlePath" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
-          <text fill="rgba(255,255,255,.35)" font-size="8" letter-spacing="3.5" font-family="Sora,sans-serif" font-weight="600">
-            <textPath href="#circlePath">ENERGÍA SOLAR • SHELDA VIDA SOLAR • VENTA • INSTALACIÓN • MANTENIMIENTO •</textPath>
-          </text>
-        </svg>
-
-        <!-- floating cards -->
-        <div class="floaty absolute -left-4 sm:-left-12 top-8 glass rounded-2xl px-5 py-4 shadow-2xl">
-          <div class="font-display font-bold text-2xl text-sun-400">98%</div>
-          <div class="text-[11px] text-white/55 tracking-wide">Clientes satisfechos</div>
-        </div>
-        <div class="floaty-2 absolute -right-2 sm:-right-8 bottom-10 glass rounded-2xl px-5 py-4 shadow-2xl">
-          <div class="font-display font-bold text-2xl text-sun-400">+12 MW</div>
-          <div class="text-[11px] text-white/55 tracking-wide">Potencia instalada</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- scroll indicator -->
-  <div class="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/35">
-    <span class="text-[10px] tracking-[0.35em] uppercase">Desliza</span>
-    <div class="w-[1px] h-10 bg-gradient-to-b from-sun-500 to-transparent"></div>
-  </div>
-</section>
-
-<!-- ============ MARQUEE ============ -->
-<div class="relative border-y border-white/8 bg-panel/60 py-5 overflow-hidden" style="border-color:rgba(255,255,255,.07)">
-  <div class="marquee-track items-center">
-    <div class="flex items-center gap-10 pr-10" id="marqueeA"></div>
-    <div class="flex items-center gap-10 pr-10" id="marqueeB" aria-hidden="true"></div>
-  </div>
-</div>
-
-<!-- ============ STATS ============ -->
-<section class="relative py-20">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="reveal glass rounded-3xl p-8 text-center">
-        <div class="font-display font-extrabold text-5xl text-grad"><span data-count="10">0</span>+</div>
-        <div class="mt-2 text-sm text-white/55">Años de experiencia</div>
-      </div>
-      <div class="reveal glass rounded-3xl p-8 text-center" style="transition-delay:.1s">
-        <div class="font-display font-extrabold text-5xl text-grad"><span data-count="850">0</span>+</div>
-        <div class="mt-2 text-sm text-white/55">Instalaciones realizadas</div>
-      </div>
-      <div class="reveal glass rounded-3xl p-8 text-center" style="transition-delay:.2s">
-        <div class="font-display font-extrabold text-5xl text-grad"><span data-count="12">0</span> MW</div>
-        <div class="mt-2 text-sm text-white/55">Potencia instalada</div>
-      </div>
-      <div class="reveal glass rounded-3xl p-8 text-center" style="transition-delay:.3s">
-        <div class="font-display font-extrabold text-5xl text-grad"><span data-count="98">0</span>%</div>
-        <div class="mt-2 text-sm text-white/55">Clientes que nos recomiendan</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ NOSOTROS ============ -->
-<section id="nosotros" class="relative py-24 overflow-hidden">
-  <div class="orb w-[400px] h-[400px] bg-sun-600/08 top-20 -right-48"></div>
-
-  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-16 items-center">
-    <!-- Images -->
-    <div class="reveal relative">
-      <div class="rounded-[28px] overflow-hidden border border-white/10 shadow-2xl">
-        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1400&auto=format&fit=crop" alt="Planta de paneles solares al atardecer" class="w-full h-[440px] md:h-[520px] object-cover"/>
-      </div>
-      <div class="absolute -bottom-8 -right-4 md:-right-8 w-48 md:w-60 rounded-2xl overflow-hidden border-4 border-ink shadow-2xl hidden sm:block">
-        <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?q=80&w=800&auto=format&fit=crop" alt="Técnicos instalando paneles solares" class="w-full h-40 md:h-48 object-cover"/>
-      </div>
-      <!-- Badge 10 años -->
-      <div class="absolute -top-6 -left-4 md:-left-8 w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-sun-400 to-sun-700 flex flex-col items-center justify-center text-ink shadow-[0_0_35px_rgba(255,176,32,.45)] floaty">
-        <span class="font-display font-extrabold text-3xl md:text-4xl leading-none">10</span>
-        <span class="text-[10px] font-bold tracking-widest uppercase mt-1">años de</span>
-        <span class="text-[10px] font-bold tracking-widest uppercase">experiencia</span>
-      </div>
-    </div>
-
-    <!-- Text -->
-    <div>
-      <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase">01 — Nosotros</span>
-      <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5 leading-tight">Una década convirtiendo sol en <span class="text-grad">ahorro real</span></h2>
-      <p class="reveal mt-6 text-white/60 leading-relaxed">
-        En <strong class="text-white">SHELDA vida solar</strong> no solo instalamos paneles: diseñamos independencia energética. Durante 10 años hemos sido el aliado de cientos de familias y empresas que decidieron tomar el control de su electricidad con sistemas fotovoltaicos de la más alta calidad.
-      </p>
-      <p class="reveal mt-4 text-white/60 leading-relaxed">
-        Nuestro equipo de ingenieros certificados acompaña cada proyecto de principio a fin: desde el estudio de tu consumo hasta el monitoreo post-instalación. Por eso somos los mejores del mercado.
-      </p>
-
-      <ul class="reveal mt-8 space-y-4">
-        <li class="flex items-start gap-3">
-          <span class="mt-0.5 w-6 h-6 rounded-full bg-sun-500/15 border border-sun-500/40 flex items-center justify-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span class="text-white/75 text-sm">Ingenieros e instaladores con certificación vigente</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-0.5 w-6 h-6 rounded-full bg-sun-500/15 border border-sun-500/40 flex items-center justify-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span class="text-white/75 text-sm">Paneles e inversores Tier 1 con garantía de hasta 25 años</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-0.5 w-6 h-6 rounded-full bg-sun-500/15 border border-sun-500/40 flex items-center justify-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span class="text-white/75 text-sm">Trámites e interconexión ante CFE incluidos, sin complicaciones</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-0.5 w-6 h-6 rounded-full bg-sun-500/15 border border-sun-500/40 flex items-center justify-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span class="text-white/75 text-sm">Monitoreo, soporte y mantenimiento post-venta de por vida</span>
-        </li>
-      </ul>
-
-      <a href="#contacto" class="reveal btn-ghost inline-flex items-center gap-2 mt-9 px-7 py-3.5 rounded-full text-sm font-semibold">
-        Conoce cómo trabajamos
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SERVICIOS ============ -->
-<section id="servicios" class="relative py-24 bg-panel/40">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="max-w-2xl">
-      <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase">02 — Servicios</span>
-      <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5 leading-tight">Soluciones solares <span class="text-grad">integrales</span></h2>
-      <p class="reveal mt-5 text-white/55 leading-relaxed">Del primer rayo de sol al último tornillo: cubrimos todo el ciclo de vida de tu sistema fotovoltaico.</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6 mt-14">
-      <!-- Venta -->
-      <div class="reveal service-card glass rounded-3xl p-8 border border-white/8">
-        <div class="flex items-start justify-between">
-          <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sun-400/20 to-sun-700/20 border border-sun-500/30 flex items-center justify-center">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="14" x2="21" y2="14"/><line x1="9" y1="4" x2="9" y2="18"/><line x1="15" y1="4" x2="15" y2="18"/><line x1="8" y1="21" x2="16" y2="21"/></svg>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+      <!-- Copy -->
+      <div class="reveal">
+        <span class="inline-flex items-center gap-2 rounded-full border border-solar-400/30 bg-solar-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-solar-300">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-solar-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-solar-400"></span>
           </span>
-          <span class="card-arrow w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </span>
-        </div>
-        <div class="mt-7 text-xs font-bold tracking-[0.25em] text-white/30">01</div>
-        <h3 class="font-display font-bold text-2xl mt-2">Venta de Sistemas</h3>
-        <p class="mt-3 text-sm text-white/55 leading-relaxed">Equipos fotovoltaicos de última generación con las mejores marcas del mercado mundial, al precio correcto.</p>
-        <ul class="mt-6 space-y-2.5 text-sm text-white/65">
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Paneles solares Tier 1 de alta eficiencia</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Inversores y microinversores inteligentes</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Baterías y sistemas de respaldo</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Estructuras y material eléctrico certificado</li>
-        </ul>
-      </div>
+          12 años iluminando Querétaro
+        </span>
 
-      <!-- Instalación -->
-      <div class="reveal service-card glass rounded-3xl p-8 border border-white/8" style="transition-delay:.12s">
-        <div class="flex items-start justify-between">
-          <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sun-400/20 to-sun-700/20 border border-sun-500/30 flex items-center justify-center">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </span>
-          <span class="card-arrow w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </span>
-        </div>
-        <div class="mt-7 text-xs font-bold tracking-[0.25em] text-white/30">02</div>
-        <h3 class="font-display font-bold text-2xl mt-2">Instalación Profesional</h3>
-        <p class="mt-3 text-sm text-white/55 leading-relaxed">Montaje impecable por técnicos certificados, con ingeniería de precisión y entrega en tiempo récord.</p>
-        <ul class="mt-6 space-y-2.5 text-sm text-white/65">
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Diseño e ingeniería a la medida de tu techo</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Instalación certificada en 3 a 5 días</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Trámites e interconexión ante CFE</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Puesta en marcha y capacitación de uso</li>
-        </ul>
-      </div>
+        <h1 class="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.55rem]">
+          Energía solar que
+          <span class="text-gradient"> trabaja para ti</span>, no al revés.
+        </h1>
 
-      <!-- Mantenimiento -->
-      <div class="reveal service-card glass rounded-3xl p-8 border border-white/8" style="transition-delay:.24s">
-        <div class="flex items-start justify-between">
-          <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sun-400/20 to-sun-700/20 border border-sun-500/30 flex items-center justify-center">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          </span>
-          <span class="card-arrow w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </span>
-        </div>
-        <div class="mt-7 text-xs font-bold tracking-[0.25em] text-white/30">03</div>
-        <h3 class="font-display font-bold text-2xl mt-2">Mantenimiento</h3>
-        <p class="mt-3 text-sm text-white/55 leading-relaxed">Tu sistema siempre al 100%. Planes de mantenimiento preventivo y correctivo con monitoreo continuo.</p>
-        <ul class="mt-6 space-y-2.5 text-sm text-white/65">
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Limpieza profesional de módulos</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Monitoreo de producción 24/7</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Termografía e inspección eléctrica</li>
-          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-sun-500"></span>Planes anuales con atención prioritaria</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-300/90 sm:text-lg">
+          Diseñamos, vendemos, instalamos y damos mantenimiento a sistemas fotovoltaicos en Querétaro.
+          Ingeniería real, equipo certificado y trámites de interconexión con CFE incluidos.
+        </p>
 
-<!-- ============ CALCULADORA ============ -->
-<section id="calculadora" class="relative py-24 overflow-hidden">
-  <div class="orb w-[450px] h-[450px] bg-sun-600/10 -bottom-32 -left-48"></div>
-
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase justify-center">03 — Calculadora solar</span>
-      <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5 leading-tight">Descubre cuánto puedes <span class="text-grad">ahorrar</span></h2>
-      <p class="reveal mt-5 text-white/55">Mueve el control según tu pago mensual de luz y obtén una estimación instantánea de tu sistema ideal.</p>
-    </div>
-
-    <div class="reveal mt-14 glass rounded-[32px] p-8 md:p-12 border border-white/10 grid lg:grid-cols-2 gap-12">
-      <!-- Controls -->
-      <div>
-        <div class="flex items-end justify-between mb-2">
-          <label class="text-sm font-medium text-white/70">Tu pago mensual de electricidad</label>
-        </div>
-        <div class="font-display font-extrabold text-5xl md:text-6xl text-grad mb-8">$<span id="billLabel">3,000</span> <span class="text-lg text-white/40 font-medium">MXN/mes</span></div>
-
-        <input type="range" id="billRange" min="500" max="20000" step="100" value="3000">
-
-        <div class="flex justify-between text-xs text-white/35 mt-3">
-          <span>$500</span><span>$20,000</span>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href="#calculadora"
+             class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-solar-400 to-solar-500 px-7 py-4 text-sm font-bold text-navy-950 shadow-xl shadow-solar-500/25 transition hover:-translate-y-0.5 hover:shadow-solar-500/45">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 7h6M9 11h6M9 15h3"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+            Calcular mi sistema
+          </a>
+          <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20sin%20compromiso." target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-7 py-4 text-sm font-semibold text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-eco-400" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 01-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 015.82 2.41 8.16 8.16 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+            Hablar con un asesor
+          </a>
         </div>
 
-        <div class="mt-10 p-5 rounded-2xl border border-sun-500/25" style="background:rgba(255,176,32,.06)">
-          <div class="flex gap-3">
-            <svg class="shrink-0 mt-0.5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <p class="text-sm text-white/70 leading-relaxed" id="insightText">Recuperas tu inversión en aproximadamente <strong class="text-sun-400">4.0 años</strong> y disfrutas más de 20 años de energía prácticamente gratis.</p>
+        <div class="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
+          <div>
+            <div class="font-display text-3xl font-extrabold text-white">12<span class="text-solar-400">+</span></div>
+            <div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Años de experiencia</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl font-extrabold text-white">800<span class="text-solar-400">+</span></div>
+            <div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Proyectos instalados</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl font-extrabold text-white">25<span class="text-solar-400"> años</span></div>
+            <div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Garantía paneles</div>
           </div>
         </div>
       </div>
 
-      <a id="calcWhatsapp" href="#" target="_blank" rel="noopener" class="btn-sun mt-8 w-full py-4 rounded-full text-sm flex items-center justify-center gap-2">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Quiero esta cotización exacta
-      </a>
-
-      <p class="text-[11px] text-white/35 mt-4 text-center">Estimación basada en tarifa promedio. La cotización formal es gratuita y sin compromiso.</p>
-
-      <!-- Results -->
-      <div class="grid grid-cols-2 gap-4 content-start">
-        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-          <div class="text-xs text-white/45 mb-2 flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Sistema recomendado</div>
-          <div class="font-display font-bold text-3xl"><span id="outKwp">7.3</span> <span class="text-base text-white/40">kWp</span></div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-          <div class="text-xs text-white/45 mb-2 flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="11" x2="21" y2="11"/><line x1="12" y1="4" x2="12" y2="18"/></svg>Paneles aprox.</div>
-          <div class="font-display font-bold text-3xl"><span id="outPanels">14</span> <span class="text-base text-white/40">módulos</span></div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-          <div class="text-xs text-white/45 mb-2 flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Ahorro mensual</div>
-          <div class="font-display font-bold text-3xl text-sun-400">$<span id="outMonthly">2,850</span></div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-          <div class="text-xs text-white/45 mb-2 flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Ahorro en 25 años</div>
-          <div class="font-display font-bold text-3xl text-sun-400">$<span id="outSave25">855,000</span></div>
-        </div>
-        <div class="col-span-2 rounded-2xl border border-sun-500/30 p-6" style="background:linear-gradient(120deg,rgba(255,176,32,.1),rgba(255,138,0,.04))">
-          <div class="flex flex-wrap items-center justify-between gap-4">
+      <!-- Visual -->
+      <div class="reveal relative" style="transition-delay:.15s">
+        <div class="relative rounded-3xl border border-white/12 bg-white/[0.04] p-5 backdrop-blur-xl shadow-2xl shadow-black/40 sm:p-7">
+          <div class="flex items-center justify-between">
             <div>
-              <div class="text-xs text-white/50 mb-1">Retorno de inversión estimado</div>
-              <div class="font-display font-extrabold text-4xl text-grad"><span id="outPayback">4.0</span> años</div>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-solar-400">Sistema residencial</p>
+              <p class="mt-1 font-display text-xl font-bold text-white">Arreglo fotovoltaico 6.6 kW</p>
             </div>
-            <div class="flex-1 min-w-[180px]">
-              <div class="h-2.5 rounded-full bg-white/10 overflow-hidden">
-                <div id="paybackBar" class="h-full rounded-full bg-gradient-to-r from-sun-400 to-sun-700 transition-all duration-500" style="width:16%"></div>
+            <span class="rounded-full border border-eco-500/30 bg-eco-500/10 px-3 py-1 text-[11px] font-bold text-eco-400">EN LÍNEA</span>
+          </div>
+
+          <!-- Panel array -->
+          <div class="mt-6 grid grid-cols-4 gap-2.5 sm:gap-3">
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:0s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.25s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.5s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.75s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:.99s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.24s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.49s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.74s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:1.99s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:2.24s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:2.49s"></div>
+            <div class="panel-cell aspect-[4/3] rounded-lg border border-white/15 bg-gradient-to-br from-[#1E3A8A] via-[#132A54] to-[#0B1F3A]" style="animation-delay:2.74s"></div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-3 gap-3">
+            <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 text-center">
+              <div class="font-display text-lg font-bold text-white" id="heroMetric1">28.4</div>
+              <div class="text-[10px] font-medium uppercase tracking-wider text-slate-400">kWh hoy</div>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 text-center">
+              <div class="font-display text-lg font-bold text-white">96<span class="text-solar-400">%</span></div>
+              <div class="text-[10px] font-medium uppercase tracking-wider text-slate-400">Eficiencia</div>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 text-center">
+              <div class="font-display text-lg font-bold text-eco-400">0.0 t</div>
+              <div class="text-[10px] font-medium uppercase tracking-wider text-slate-400">CO₂ hoy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating badge -->
+        <div class="floaty absolute -bottom-6 -left-4 hidden items-center gap-3 rounded-2xl border border-white/12 bg-navy-900/90 px-5 py-3.5 backdrop-blur-xl shadow-2xl sm:flex">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-eco-500/15">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-eco-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <div>
+            <p class="text-sm font-bold text-white">Interconexión CFE</p>
+            <p class="text-xs text-slate-400">Trámite 100% incluido</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST BAR ================= -->
+<section class="border-b border-slate-100 bg-white">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="grid grid-cols-2 gap-y-8 py-10 sm:grid-cols-4 sm:py-12">
+      <div class="reveal flex flex-col items-center text-center">
+        <svg viewBox="0 0 24 24" class="h-7 w-7 text-solar-500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+        <p class="mt-3 font-display text-sm font-bold text-navy-900">Ingeniería certificada</p>
+        <p class="mt-1 text-xs leading-relaxed text-slate-500">Diseño avalado por ingenieros eléctricos titulados</p>
+      </div>
+      <div class="reveal flex flex-col items-center text-center" style="transition-delay:.08s">
+        <svg viewBox="0 0 24 24" class="h-7 w-7 text-solar-500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <p class="mt-3 font-display text-sm font-bold text-navy-900">Garantía por escrito</p>
+        <p class="mt-1 text-xs leading-relaxed text-slate-500">Cobertura en equipo, mano de obra y producción</p>
+      </div>
+      <div class="reveal flex flex-col items-center text-center" style="transition-delay:.16s">
+        <svg viewBox="0 0 24 24" class="h-7 w-7 text-solar-500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        <p class="mt-3 font-display text-sm font-bold text-navy-900">Mantenimiento local</p>
+        <p class="mt-1 text-xs leading-relaxed text-slate-500">Equipo propio en Querétaro, respuesta en 48 h</p>
+      </div>
+      <div class="reveal flex flex-col items-center text-center" style="transition-delay:.24s">
+        <svg viewBox="0 0 24 24" class="h-7 w-7 text-solar-500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M19.1 19.1l-4.2-4.2M2 12h6M22 12h-6M4.9 19.1l4.2-4.2M19.1 4.9l-4.2 4.2"/></svg>
+        <p class="mt-3 font-display text-sm font-bold text-navy-900">Monitoreo remoto</p>
+        <p class="mt-1 text-xs leading-relaxed text-slate-500">Vigilamos tu generación desde el primer día</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios" class="relative bg-slate-50 py-20 lg:py-28">
+  <div class="absolute inset-0 grid-lines-light"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-solar-600">Nuestros servicios</span>
+      <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+        Todo el ciclo de vida de tu sistema solar
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-600">
+        Desde el estudio energético hasta el mantenimiento a los 10 años. Un solo proveedor, una sola responsabilidad.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Card 1 -->
+      <div class="reveal group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-solar-300 hover:shadow-soft">
+        <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-solar-100/60 blur-2xl transition group-hover:bg-solar-200/70"></div>
+        <div class="relative">
+          <span class="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-navy-800 to-navy-900 shadow-lg shadow-navy-900/20">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 text-solar-400" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Venta de equipo</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-slate-600">
+            Paneles, inversores híbridos, microinversores y bancos de baterías de las marcas líderes del mercado, con factura y garantía.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Paneles Tier 1</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Respaldo con baterías</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Asesoría de compra</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="reveal group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-solar-300 hover:shadow-soft" style="transition-delay:.08s">
+        <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-solar-100/60 blur-2xl transition group-hover:bg-solar-200/70"></div>
+        <div class="relative">
+          <span class="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-navy-800 to-navy-900 shadow-lg shadow-navy-900/20">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 text-solar-400" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Instalación</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-slate-600">
+            Montaje estructural, cableado, protecciones DC/AC y puesta en marcha. Cumplimos NOM-001-SEDE y las especificaciones de CFE.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Estructura anticiclónica</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Trámite CFE incluido</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Pruebas y certificado</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="reveal group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-solar-300 hover:shadow-soft" style="transition-delay:.16s">
+        <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-solar-100/60 blur-2xl transition group-hover:bg-solar-200/70"></div>
+        <div class="relative">
+          <span class="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-navy-800 to-navy-900 shadow-lg shadow-navy-900/20">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 text-solar-400" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 007-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5S5 13 5 15a7 7 0 007 7z"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Mantenimiento</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-slate-600">
+            Limpieza profesional, termografía, revisión de strings, torque de conexiones y reporte de desempeño anual.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Limpieza sin químicos</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Inspección termográfica</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Plan anual programado</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="reveal group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-solar-300 hover:shadow-soft" style="transition-delay:.24s">
+        <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-solar-100/60 blur-2xl transition group-hover:bg-solar-200/70"></div>
+        <div class="relative">
+          <span class="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-navy-800 to-navy-900 shadow-lg shadow-navy-900/20">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 text-solar-400" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3.5 3.5L21 7"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Estudio energético</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-slate-600">
+            Analizamos tus 12 últimos recibos, curvas de carga y sombreado del sitio para dimensionar con precisión, sin sobredimensionar.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Análisis de recibos CFE</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Simulación de producción</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-solar-500"></span>Retorno de inversión</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS ================= -->
+<section id="nosotros" class="relative overflow-hidden bg-navy-950 py-20 lg:py-28">
+  <div class="glow h-[420px] w-[420px] bg-solar-500/15 -left-32 top-10"></div>
+  <div class="glow h-[380px] w-[380px] bg-blue-600/15 -right-24 bottom-0"></div>
+
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+      <div class="reveal">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-solar-400">Quiénes somos</span>
+        <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+          12 años haciendo las cosas bien, no solo rápido.
+        </h2>
+        <p class="mt-5 text-base leading-relaxed text-slate-300/90">
+          SHELDA nació en Querétaro con una convicción simple: la energía solar no se vende, se calcula.
+          Cada proyecto parte de un estudio real de consumo y generación, no de una promesa de venta.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-slate-300/90">
+          En más de una década hemos ejecutado proyectos residenciales, comerciales e industriales en todo el
+          Bajío, con equipo propio de instalación y un área técnica dedicada exclusivamente al mantenimiento.
+        </p>
+
+        <div class="mt-9 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+            <div class="font-display text-2xl font-extrabold text-solar-400">100%</div>
+            <p class="mt-1 text-sm font-medium text-white">Proyectos con trámite CFE concluido</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+            <div class="font-display text-2xl font-extrabold text-solar-400">48 h</div>
+            <p class="mt-1 text-sm font-medium text-white">Tiempo de respuesta en servicio</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+            <div class="font-display text-2xl font-extrabold text-solar-400">25 años</div>
+            <p class="mt-1 text-sm font-medium text-white">Garantía de producción en paneles</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+            <div class="font-display text-2xl font-extrabold text-solar-400">5 años</div>
+            <p class="mt-1 text-sm font-medium text-white">Garantía en instalación y mano de obra</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-7 backdrop-blur-xl shadow-2xl shadow-black/40">
+          <h3 class="font-display text-lg font-bold text-white">Por qué nos eligen sobre la competencia</h3>
+          <div class="mt-6 space-y-5">
+            <div class="flex gap-4">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-eco-500/15 text-sm font-bold text-eco-400">01</span>
+              <div>
+                <p class="text-sm font-semibold text-white">Dimensionamos con datos, no con estimados</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-400">Analizamos tus recibos y horarios de consumo para evitar que pagues por kW que no necesitas.</p>
               </div>
-              <div class="flex justify-between text-[10px] text-white/35 mt-2"><span>Inversión recuperada</span><span>Vida útil: 25+ años</span></div>
+            </div>
+            <div class="h-px bg-white/10"></div>
+            <div class="flex gap-4">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-eco-500/15 text-sm font-bold text-eco-400">02</span>
+              <div>
+                <p class="text-sm font-semibold text-white">Instaladores propios, no subcontratados</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-400">El mismo equipo que diseña es el que sube al techo. Control total de calidad y seguridad.</p>
+              </div>
+            </div>
+            <div class="h-px bg-white/10"></div>
+            <div class="flex gap-4">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-eco-500/15 text-sm font-bold text-eco-400">03</span>
+              <div>
+                <p class="text-sm font-semibold text-white">Monitoreo y mantenimiento de por vida</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-400">No desaparecemos al terminar la obra. Revisamos tu generación y te avisamos si algo baja de rendimiento.</p>
+              </div>
+            </div>
+            <div class="h-px bg-white/10"></div>
+            <div class="flex gap-4">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-eco-500/15 text-sm font-bold text-eco-400">04</span>
+              <div>
+                <p class="text-sm font-semibold text-white">Presencia real en Querétaro</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-400">Oficina y almacén local. Refacciones, respuesta técnica y soporte sin depender de terceros.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -784,176 +492,436 @@ input:focus, textarea:focus, select:focus {
   </div>
 </section>
 
-<!-- ============ PROCESO ============ -->
-<section id="proceso" class="relative py-24 bg-panel/40">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase justify-center">04 — Proceso</span>
-      <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5">Así de simple es <span class="text-grad">cambiarte al sol</span></h2>
+<!-- ================= CALCULADORA ================= -->
+<section id="calculadora" class="relative bg-white py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-solar-600">Herramienta interactiva</span>
+      <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+        Calcula el tamaño de tu sistema solar
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-600">
+        Dos formas de dimensionar. Usa tu recibo de luz o suma tus equipos de alto consumo.
+        Los resultados son un estimado y se confirman con nuestro estudio energético gratuito.
+      </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 mt-16">
-      <div class="reveal relative text-center lg:text-left">
-        <div class="step-line"></div>
-        <div class="relative z-10 w-[68px] h-[68px] mx-auto lg:mx-0 rounded-2xl bg-gradient-to-br from-sun-400 to-sun-700 flex items-center justify-center font-display font-extrabold text-2xl text-ink shadow-[0_0_25px_rgba(255,176,32,.35)]">1</div>
-        <h3 class="font-display font-bold text-xl mt-6">Diagnóstico gratuito</h3>
-        <p class="mt-3 text-sm text-white/55 leading-relaxed">Analizamos tu recibo de luz y tus hábitos de consumo. Visita técnica sin costo.</p>
+    <div class="mt-12 reveal">
+      <!-- Tabs -->
+      <div class="mx-auto flex max-w-2xl flex-col gap-2 rounded-2xl border border-slate-200 bg-slate-100 p-1.5 sm:flex-row">
+        <button id="tabBtn1" data-tab="1"
+          class="tab-active flex-1 rounded-xl px-5 py-3 text-sm font-bold transition-all duration-300">
+          Por mi recibo de luz
+        </button>
+        <button id="tabBtn2" data-tab="2"
+          class="flex-1 rounded-xl px-5 py-3 text-sm font-bold text-slate-600 transition-all duration-300 hover:text-navy-900">
+          Por mis equipos y autos
+        </button>
       </div>
-      <div class="reveal relative text-center lg:text-left" style="transition-delay:.12s">
-        <div class="step-line"></div>
-        <div class="relative z-10 w-[68px] h-[68px] mx-auto lg:mx-0 rounded-2xl bg-gradient-to-br from-sun-400 to-sun-700 flex items-center justify-center font-display font-extrabold text-2xl text-ink shadow-[0_0_25px_rgba(255,176,32,.35)]">2</div>
-        <h3 class="font-display font-bold text-xl mt-6">Diseño a medida</h3>
-        <p class="mt-3 text-sm text-white/55 leading-relaxed">Propuesta técnica y económica personalizada, con proyección exacta de ahorro.</p>
-      </div>
-      <div class="reveal relative text-center lg:text-left" style="transition-delay:.24s">
-        <div class="step-line"></div>
-        <div class="relative z-10 w-[68px] h-[68px] mx-auto lg:mx-0 rounded-2xl bg-gradient-to-br from-sun-400 to-sun-700 flex items-center justify-center font-display font-extrabold text-2xl text-ink shadow-[0_0_25px_rgba(255,176,32,.35)]">3</div>
-        <h3 class="font-display font-bold text-xl mt-6">Instalación certificada</h3>
-        <p class="mt-3 text-sm text-white/55 leading-relaxed">Montaje profesional en 3 a 5 días. Nos encargamos de todos los trámites ante CFE.</p>
-      </div>
-      <div class="reveal relative text-center lg:text-left" style="transition-delay:.36s">
-        <div class="relative z-10 w-[68px] h-[68px] mx-auto lg:mx-0 rounded-2xl bg-gradient-to-br from-sun-400 to-sun-700 flex items-center justify-center font-display font-extrabold text-2xl text-ink shadow-[0_0_25px_rgba(255,176,32,.35)]">4</div>
-        <h3 class="font-display font-bold text-xl mt-6">Monitoreo y soporte</h3>
-        <p class="mt-3 text-sm text-white/55 leading-relaxed">Supervisamos tu producción y te acompañamos con mantenimiento de por vida.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ PROYECTOS ============ -->
-<section id="proyectos" class="relative py-24">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="flex flex-wrap items-end justify-between gap-6">
-      <div class="max-w-xl">
-        <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase">05 — Proyectos</span>
-        <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5 leading-tight">Energía que ya está <span class="text-grad">funcionando</span></h2>
-      </div>
-      <p class="reveal text-white/50 text-sm max-w-sm">Más de 850 sistemas instalados en hogares, comercios e industrias en todo el país.</p>
-    </div>
+      <!-- Panel 1 -->
+      <div id="panel1" class="mt-8">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <!-- Inputs -->
+          <div class="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-8">
+            <div class="flex items-center gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-navy-900 text-solar-400">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+              </span>
+              <div>
+                <h3 class="font-display text-base font-bold text-navy-900">Datos de tu recibo CFE</h3>
+                <p class="text-xs text-slate-500">Bimestral, como lo emite CFE en Querétaro</p>
+              </div>
+            </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
-      <div class="reveal project-card relative rounded-3xl overflow-hidden border border-white/10 h-80 group">
-        <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=1200&auto=format&fit=crop" alt="Casa residencial con paneles solares" class="w-full h-full object-cover"/>
-        <div class="proj-overlay absolute inset-0"></div>
-        <div class="absolute top-5 left-5"><span class="text-[10px] font-bold tracking-[0.2em] uppercase bg-sun-500 text-ink px-3 py-1.5 rounded-full">Residencial</span></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6">
-          <h3 class="font-display font-bold text-xl">Casa Lomas</h3>
-          <p class="text-sm text-white/60 mt-1">8.2 kWp · CDMX · Ahorro del 96%</p>
-        </div>
-      </div>
-      <div class="reveal project-card relative rounded-3xl overflow-hidden border border-white/10 h-80 group" style="transition-delay:.1s">
-        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1200&auto=format&fit=crop" alt="Paneles solares comerciales" class="w-full h-full object-cover"/>
-        <div class="proj-overlay absolute inset-0"></div>
-        <div class="absolute top-5 left-5"><span class="text-[10px] font-bold tracking-[0.2em] uppercase bg-white text-ink px-3 py-1.5 rounded-full">Comercial</span></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6">
-          <h3 class="font-display font-bold text-xl">Plaza Norte</h3>
-          <p class="text-sm text-white/60 mt-1">120 kWp · Estado de México · 340 paneles</p>
-        </div>
-      </div>
-      <div class="reveal project-card relative rounded-3xl overflow-hidden border border-white/10 h-80 group" style="transition-delay:.2s">
-        <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1200&auto=format&fit=crop" alt="Parque de energía renovable" class="w-full h-full object-cover"/>
-        <div class="proj-overlay absolute inset-0"></div>
-        <div class="absolute top-5 left-5"><span class="text-[10px] font-bold tracking-[0.2em] uppercase bg-ink text-sun-400 border border-sun-500/50 px-3 py-1.5 rounded-full">Industrial</span></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6">
-          <h3 class="font-display font-bold text-xl">Planta Textil del Valle</h3>
-          <p class="text-sm text-white/60 mt-1">350 kWp · Puebla · Retorno en 3.2 años</p>
-        </div>
-      </div>
-      <div class="reveal project-card relative rounded-3xl overflow-hidden border border-white/10 h-80 group">
-        <img src="https://images.unsplash.com/photo-1545209463-e2825498edbf?q=80&w=1200&auto=format&fit=crop" alt="Paneles solares contra el cielo" class="w-full h-full object-cover"/>
-        <div class="proj-overlay absolute inset-0"></div>
-        <div class="absolute top-5 left-5"><span class="text-[10px] font-bold tracking-[0.2em] uppercase bg-sun-500 text-ink px-3 py-1.5 rounded-full">Residencial</span></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6">
-          <h3 class="font-display font-bold text-xl">Casa del Sol</h3>
-          <p class="text-sm text-white/60 mt-1">12.4 kWp · Querétaro · Con baterías de respaldo</p>
-        </div>
-      </div>
-      <div class="reveal project-card relative rounded-3xl overflow-hidden border border-white/10 h-80 group" style="transition-delay:.1s">
-        <img src="https://images.unsplash.com/photo-1595437193398-f24279553f4f?q=80&w=1200&auto=format&fit=crop" alt="Detalle de panel solar azul" class="w-full h-full object-cover"/>
-        <div class="proj-overlay absolute inset-0"></div>
-        <div class="absolute top-5 left-5"><span class="text-[10px] font-bold tracking-[0.2em] uppercase bg-white text-ink px-3 py-1.5 rounded-full">Comercial</span></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6">
-          <h3 class="font-display font-bold text-xl">Corporativo Andares</h3>
-          <p class="text-sm text-white/60 mt-1">85 kWp · Guadalajara · Monitoreo 24/7</p>
-        </div>
-      </div>
-      <div class="reveal project-card relative rounded-3xl overflow-hidden border border-white/10 h-80 group" style="transition-delay:.2s">
-        <img src="https://images.unsplash.com/photo-1566093097221-ac2335b09e70?q=80&w=1200&auto=format&fit=crop" alt="Técnico trabajando en instalación solar" class="w-full h-full object-cover"/>
-        <div class="proj-overlay absolute inset-0"></div>
-        <div class="absolute top-5 left-5"><span class="text-[10px] font-bold tracking-[0.2em] uppercase bg-ink text-sun-400 border border-sun-500/50 px-3 py-1.5 rounded-full">Industrial</span></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6">
-          <h3 class="font-display font-bold text-xl">Agroindustrias del Campo</h3>
-          <p class="text-sm text-white/60 mt-1">210 kWp · Guanajuato · Bombeo solar incluido</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="mt-8 space-y-8">
+              <div>
+                <div class="flex items-end justify-between">
+                  <label for="billAmount" class="text-sm font-semibold text-navy-900">Monto promedio del recibo (bimestral)</label>
+                  <span class="font-display text-lg font-extrabold text-solar-600" id="billAmountOut">$3,500</span>
+                </div>
+                <input id="billAmount" type="range" min="300" max="30000" step="100" value="3500" class="mt-4">
+                <div class="mt-2 flex justify-between text-[11px] font-medium text-slate-400">
+                  <span>$300</span><span>$30,000+</span>
+                </div>
+              </div>
 
-<!-- ============ TESTIMONIOS ============ -->
-<section class="relative py-24 bg-panel/40 overflow-hidden">
-  <div class="absolute font-display font-extrabold outline-text text-[22vw] leading-none top-4 left-1/2 -translate-x-1/2 select-none pointer-events-none whitespace-nowrap">SHELDA</div>
+              <div>
+                <div class="flex items-end justify-between">
+                  <label for="billRate" class="text-sm font-semibold text-navy-900">Costo promedio por kWh</label>
+                  <span class="font-display text-lg font-extrabold text-solar-600" id="billRateOut">$3.50</span>
+                </div>
+                <input id="billRate" type="range" min="2.5" max="6.5" step="0.1" value="3.5" class="mt-4">
+                <div class="mt-2 flex justify-between text-[11px] font-medium text-slate-400">
+                  <span>$2.50 (tarifa 1)</span><span>$6.50 (DAC)</span>
+                </div>
+                <p class="mt-3 rounded-xl bg-white px-4 py-3 text-xs leading-relaxed text-slate-500 ring-1 ring-slate-200">
+                  Consejo: si tu recibo trae la leyenda <strong class="text-navy-900">DAC</strong>, tu costo por kWh es el más alto y el ahorro solar es mayor.
+                </p>
+              </div>
+            </div>
+          </div>
 
-  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase justify-center">Testimonios</span>
-      <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5">Lo que dicen <span class="text-grad">nuestros clientes</span></h2>
-    </div>
+          <!-- Results -->
+          <div id="res1" class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 to-navy-950 p-6 shadow-2xl shadow-navy-900/25 sm:p-8">
+            <div class="glow h-56 w-56 bg-solar-500/20 -right-16 -top-16"></div>
+            <div class="relative">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-solar-400">Sistema recomendado</p>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="font-display text-5xl font-extrabold text-white" id="c1-kw">3.7</span>
+                <span class="font-display text-2xl font-bold text-slate-400">kW</span>
+              </div>
+              <p class="mt-1 text-sm text-slate-400">Cobertura estimada del <span class="font-semibold text-white" id="c1-cover">100%</span> de tu consumo</p>
 
-    <div class="grid md:grid-cols-3 gap-6 mt-14">
-      <div class="reveal glass rounded-3xl p-8 border border-white/8 flex flex-col">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(255,176,32,.3)"><path d="M9.6 5C6 7 4 10 4 13.6 4 16.6 5.9 19 8.8 19c2.3 0 4-1.7 4-4 0-2.2-1.6-3.8-3.7-3.8-.4 0-.8.1-1 .1.4-2 1.9-3.9 3.9-5L9.6 5zm10 0c-3.6 2-5.6 5-5.6 8.6 0 3 1.9 5.4 4.8 5.4 2.3 0 4-1.7 4-4 0-2.2-1.6-3.8-3.7-3.8-.4 0-.8.1-1 .1.4-2 1.9-3.9 3.9-5L19.6 5z"/></svg>
-        <div class="flex gap-1 mt-4 mb-4">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-        </div>
-        <p class="text-white/70 text-sm leading-relaxed flex-1">"Mi recibo bajó de $4,200 a $180 pesos al bimestre. La instalación fue impecable y en solo 4 días. El equipo de SHELDA resolvió todas mis dudas, incluso meses después."</p>
-        <div class="flex items-center gap-3 mt-6 pt-6 border-t border-white/8">
-          <span class="w-11 h-11 rounded-full bg-gradient-to-br from-sun-400 to-sun-700 flex items-center justify-center font-display font-bold text-ink">MR</span>
-          <div>
-            <div class="font-semibold text-sm">Mariana Robles</div>
-            <div class="text-xs text-white/45">Casa habitación · CDMX</div>
+              <div class="mt-7 grid grid-cols-2 gap-3">
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Paneles de 580 W</p>
+                  <p class="mt-1 font-display text-xl font-bold text-white"><span id="c1-panels">7</span></p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Área de techo</p>
+                  <p class="mt-1 font-display text-xl font-bold text-white"><span id="c1-area">16</span> m²</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Generación mensual</p>
+                  <p class="mt-1 font-display text-xl font-bold text-solar-400"><span id="c1-gen">500</span> kWh</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Inversión estimada</p>
+                  <p class="mt-1 font-display text-xl font-bold text-white"><span id="c1-cost">$70k</span></p>
+                </div>
+              </div>
+
+              <div class="mt-6 space-y-3">
+                <div>
+                  <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-400">
+                    <span>Consumo mensual actual</span><span id="c1-consumoLbl" class="font-semibold text-white">500 kWh</span>
+                  </div>
+                  <div class="h-2.5 overflow-hidden rounded-full bg-white/10">
+                    <div id="c1-barConsumo" class="h-full rounded-full bg-gradient-to-r from-slate-500 to-slate-400 transition-all duration-700" style="width:100%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-400">
+                    <span>Generación del sistema</span><span id="c1-genLbl" class="font-semibold text-solar-400">500 kWh</span>
+                  </div>
+                  <div class="h-2.5 overflow-hidden rounded-full bg-white/10">
+                    <div id="c1-barGen" class="h-full rounded-full bg-gradient-to-r from-solar-500 to-solar-400 transition-all duration-700" style="width:100%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-7 space-y-3 border-t border-white/10 pt-6 text-sm">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">Ahorro anual estimado</span>
+                  <span class="font-display text-base font-bold text-eco-400" id="c1-ahorro">$21,000</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">Retorno de inversión</span>
+                  <span class="font-display text-base font-bold text-white" id="c1-payback">3.3 años</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">CO₂ evitado al año</span>
+                  <span class="font-display text-base font-bold text-white" id="c1-co2">2.6 t</span>
+                </div>
+              </div>
+
+              <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20hice%20el%20c%C3%A1lculo%20con%20mi%20recibo%20de%20luz%20y%20quiero%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener"
+                 class="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-solar-400 to-solar-500 px-6 py-4 text-sm font-bold text-navy-950 shadow-lg shadow-solar-500/25 transition hover:brightness-105">
+                Enviar mi resultado por WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="reveal glass rounded-3xl p-8 border border-white/8 flex flex-col" style="transition-delay:.12s">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(255,176,32,.3)"><path d="M9.6 5C6 7 4 10 4 13.6 4 16.6 5.9 19 8.8 19c2.3 0 4-1.7 4-4 0-2.2-1.6-3.8-3.7-3.8-.4 0-.8.1-1 .1.4-2 1.9-3.9 3.9-5L9.6 5zm10 0c-3.6 2-5.6 5-5.6 8.6 0 3 1.9 5.4 4.8 5.4 2.3 0 4-1.7 4-4 0-2.2-1.6-3.8-3.7-3.8-.4 0-.8.1-1 .1.4-2 1.9-3.9 3.9-5L19.6 5z"/></svg>
-        <div class="flex gap-1 mt-4 mb-4">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-        </div>
-        <p class="text-white/70 text-sm leading-relaxed flex-1">"Instalaron 340 paneles en nuestra plaza comercial sin interrumpir la operación ni un solo día. Profesionalismo de otro nivel. Recuperamos la inversión antes de lo proyectado."</p>
-        <div class="flex items-center gap-3 mt-6 pt-6 border-t border-white/8">
-          <span class="w-11 h-11 rounded-full bg-gradient-to-br from-sun-400 to-sun-700 flex items-center justify-center font-display font-bold text-ink">JG</span>
-          <div>
-            <div class="font-semibold text-sm">Jorge Gutiérrez</div>
-            <div class="text-xs text-white/45">Director · Plaza Norte</div>
+      <!-- Panel 2 -->
+      <div id="panel2" class="mt-8 hidden">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <!-- Inputs -->
+          <div class="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-8">
+            <div class="flex items-center gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-navy-900 text-solar-400">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17v3M18 17v3M4 13h16M6 13V7a2 2 0 012-2h8a2 2 0 012 2v6"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+              </span>
+              <div>
+                <h3 class="font-display text-base font-bold text-navy-900">Tus equipos de alto consumo</h3>
+                <p class="text-xs text-slate-500">Autos eléctricos, aires acondicionados y carga base</p>
+              </div>
+            </div>
+
+            <div class="mt-8 space-y-8">
+              <div>
+                <div class="flex items-end justify-between">
+                  <label for="baseKwh" class="text-sm font-semibold text-navy-900">Consumo base del hogar (mensual)</label>
+                  <span class="font-display text-lg font-extrabold text-solar-600"><span id="baseKwhOut">350</span> kWh</span>
+                </div>
+                <input id="baseKwh" type="range" min="100" max="2500" step="25" value="350" class="mt-4">
+                <div class="mt-2 flex justify-between text-[11px] font-medium text-slate-400">
+                  <span>100 kWh</span><span>2,500 kWh</span>
+                </div>
+              </div>
+
+              <div class="h-px bg-slate-200"></div>
+
+              <div>
+                <div class="flex items-end justify-between">
+                  <label for="evCount" class="text-sm font-semibold text-navy-900">Autos eléctricos o híbridos enchufables</label>
+                  <span class="font-display text-lg font-extrabold text-solar-600"><span id="evCountOut">0</span></span>
+                </div>
+                <input id="evCount" type="range" min="0" max="6" step="1" value="0" class="mt-4">
+                <div class="mt-2 flex justify-between text-[11px] font-medium text-slate-400">
+                  <span>0</span><span>6 vehículos</span>
+                </div>
+                <p class="mt-3 text-xs text-slate-500">Se estiman <strong class="text-navy-900">250 kWh al mes</strong> por vehículo cargando en casa (aprox. 1,500 km).</p>
+              </div>
+
+              <div class="h-px bg-slate-200"></div>
+
+              <div>
+                <div class="flex items-end justify-between">
+                  <label for="acCount" class="text-sm font-semibold text-navy-900">Equipos de aire acondicionado</label>
+                  <span class="font-display text-lg font-extrabold text-solar-600"><span id="acCountOut">2</span></span>
+                </div>
+                <input id="acCount" type="range" min="0" max="12" step="1" value="2" class="mt-4">
+                <div class="mt-2 flex justify-between text-[11px] font-medium text-slate-400">
+                  <span>0</span><span>12 equipos</span>
+                </div>
+              </div>
+
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="acSize" class="text-sm font-semibold text-navy-900">Capacidad por equipo</label>
+                  <select id="acSize" class="mt-3 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-navy-900 outline-none transition focus:border-solar-400 focus:ring-2 focus:ring-solar-200">
+                    <option value="1.1">1 tonelada (12,000 BTU)</option>
+                    <option value="1.6" selected>1.5 toneladas (18,000 BTU)</option>
+                    <option value="2.1">2 toneladas (24,000 BTU)</option>
+                  </select>
+                </div>
+                <div>
+                  <div class="flex items-end justify-between">
+                    <label for="acHours" class="text-sm font-semibold text-navy-900">Horas de uso al día</label>
+                    <span class="font-display text-base font-extrabold text-solar-600"><span id="acHoursOut">6</span> h</span>
+                  </div>
+                  <input id="acHours" type="range" min="1" max="16" step="1" value="6" class="mt-5">
+                </div>
+              </div>
+
+              <p class="rounded-xl bg-white px-4 py-3 text-xs leading-relaxed text-slate-500 ring-1 ring-slate-200">
+                El cálculo de aire acondicionado aplica un factor del 75% por modulación de equipos inverter y estacionalidad anual.
+              </p>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div id="res2" class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 to-navy-950 p-6 shadow-2xl shadow-navy-900/25 sm:p-8">
+            <div class="glow h-56 w-56 bg-eco-500/20 -right-16 -top-16"></div>
+            <div class="relative">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-solar-400">Sistema recomendado</p>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="font-display text-5xl font-extrabold text-white" id="c2-kw">7.6</span>
+                <span class="font-display text-2xl font-bold text-slate-400">kW</span>
+              </div>
+              <p class="mt-1 text-sm text-slate-400">Consumo total estimado: <span class="font-semibold text-white" id="c2-totalLbl">1,032 kWh/mes</span></p>
+
+              <div class="mt-7 grid grid-cols-2 gap-3">
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Paneles de 580 W</p>
+                  <p class="mt-1 font-display text-xl font-bold text-white"><span id="c2-panels">14</span></p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Área de techo</p>
+                  <p class="mt-1 font-display text-xl font-bold text-white"><span id="c2-area">32</span> m²</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Generación mensual</p>
+                  <p class="mt-1 font-display text-xl font-bold text-solar-400"><span id="c2-gen">1,026</span> kWh</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Inversión estimada</p>
+                  <p class="mt-1 font-display text-xl font-bold text-white"><span id="c2-cost">$144k</span></p>
+                </div>
+              </div>
+
+              <div class="mt-6 space-y-3">
+                <div>
+                  <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-400">
+                    <span>Consumo mensual total</span><span id="c2-consumoLbl" class="font-semibold text-white">1,032 kWh</span>
+                  </div>
+                  <div class="h-2.5 overflow-hidden rounded-full bg-white/10">
+                    <div id="c2-barConsumo" class="h-full rounded-full bg-gradient-to-r from-slate-500 to-slate-400 transition-all duration-700" style="width:100%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-400">
+                    <span>Generación del sistema</span><span id="c2-genLbl" class="font-semibold text-solar-400">1,026 kWh</span>
+                  </div>
+                  <div class="h-2.5 overflow-hidden rounded-full bg-white/10">
+                    <div id="c2-barGen" class="h-full rounded-full bg-gradient-to-r from-solar-500 to-solar-400 transition-all duration-700" style="width:100%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-7 grid grid-cols-3 gap-3 border-t border-white/10 pt-6 text-center">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Base</p>
+                  <p class="mt-1 font-display text-sm font-bold text-white"><span id="c2-base">350</span> kWh</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Autos</p>
+                  <p class="mt-1 font-display text-sm font-bold text-white"><span id="c2-ev">0</span> kWh</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Aires</p>
+                  <p class="mt-1 font-display text-sm font-bold text-white"><span id="c2-ac">432</span> kWh</p>
+                </div>
+              </div>
+
+              <div class="mt-6 space-y-3 border-t border-white/10 pt-6 text-sm">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">Ahorro anual estimado</span>
+                  <span class="font-display text-base font-bold text-eco-400" id="c2-ahorro">$43,000</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">Retorno de inversión</span>
+                  <span class="font-display text-base font-bold text-white" id="c2-payback">3.4 años</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">CO₂ evitado al año</span>
+                  <span class="font-display text-base font-bold text-white" id="c2-co2">5.4 t</span>
+                </div>
+              </div>
+
+              <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20calcul%C3%A9%20mi%20sistema%20por%20equipos%20y%20autos%20el%C3%A9ctricos%20y%20quiero%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener"
+                 class="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-solar-400 to-solar-500 px-6 py-4 text-sm font-bold text-navy-950 shadow-lg shadow-solar-500/25 transition hover:brightness-105">
+                Enviar mi resultado por WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="reveal glass rounded-3xl p-8 border border-white/8 flex flex-col" style="transition-delay:.24s">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(255,176,32,.3)"><path d="M9.6 5C6 7 4 10 4 13.6 4 16.6 5.9 19 8.8 19c2.3 0 4-1.7 4-4 0-2.2-1.6-3.8-3.7-3.8-.4 0-.8.1-1 .1.4-2 1.9-3.9 3.9-5L9.6 5zm10 0c-3.6 2-5.6 5-5.6 8.6 0 3 1.9 5.4 4.8 5.4 2.3 0 4-1.7 4-4 0-2.2-1.6-3.8-3.7-3.8-.4 0-.8.1-1 .1.4-2 1.9-3.9 3.9-5L19.6 5z"/></svg>
-        <div class="flex gap-1 mt-4 mb-4">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFB020"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      <p class="mt-8 text-center text-xs leading-relaxed text-slate-400">
+        * Estimaciones basadas en 4.5 kWh por kW instalado al día (Irradiancia promedio de Querétaro) y un factor de rendimiento del 78%.
+        El resultado final se confirma con nuestro estudio energético sin costo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section id="proceso" class="relative overflow-hidden bg-slate-50 py-20 lg:py-28">
+  <div class="absolute inset-0 grid-lines-light"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-solar-600">Cómo trabajamos</span>
+      <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+        Un proceso claro, de principio a fin
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-600">
+        Sin sorpresas, sin letras chiquitas. Sabes exactamente qué pasa en cada etapa y cuánto tiempo toma.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div class="reveal relative rounded-2xl border border-slate-200 bg-white p-7 shadow-card">
+        <span class="absolute -top-4 left-7 grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-solar-400 to-solar-600 font-display text-sm font-extrabold text-navy-950 shadow-lg shadow-solar-500/30">1</span>
+        <h3 class="mt-5 font-display text-base font-bold text-navy-900">Estudio energético</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Revisamos tus recibos, medimos el sitio, evaluamos sombreado y definimos tu perfil de consumo real.</p>
+        <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-solar-600">Día 1 – 3</p>
+      </div>
+      <div class="reveal relative rounded-2xl border border-slate-200 bg-white p-7 shadow-card" style="transition-delay:.08s">
+        <span class="absolute -top-4 left-7 grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-solar-400 to-solar-600 font-display text-sm font-extrabold text-navy-950 shadow-lg shadow-solar-500/30">2</span>
+        <h3 class="mt-5 font-display text-base font-bold text-navy-900">Diseño e ingeniería</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Entregamos planos, memoria de cálculo, diagrama unifilar y proyección de generación y retorno.</p>
+        <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-solar-600">Día 4 – 7</p>
+      </div>
+      <div class="reveal relative rounded-2xl border border-slate-200 bg-white p-7 shadow-card" style="transition-delay:.16s">
+        <span class="absolute -top-4 left-7 grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-solar-400 to-solar-600 font-display text-sm font-extrabold text-navy-950 shadow-lg shadow-solar-500/30">3</span>
+        <h3 class="mt-5 font-display text-base font-bold text-navy-900">Instalación y trámite</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Montaje, protecciones, puesta en marcha y gestión completa de la interconexión ante CFE.</p>
+        <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-solar-600">Día 8 – 20</p>
+      </div>
+      <div class="reveal relative rounded-2xl border border-slate-200 bg-white p-7 shadow-card" style="transition-delay:.24s">
+        <span class="absolute -top-4 left-7 grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-solar-400 to-solar-600 font-display text-sm font-extrabold text-navy-950 shadow-lg shadow-solar-500/30">4</span>
+        <h3 class="mt-5 font-display text-base font-bold text-navy-900">Monitoreo y soporte</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Activamos el monitoreo remoto, capacitamos al usuario y programamos el mantenimiento anual.</p>
+        <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-solar-600">Permanente</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section class="bg-white py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-solar-600">Clientes</span>
+      <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+        Lo que dicen en Querétaro
+      </h2>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+      <div class="reveal rounded-2xl border border-slate-200 bg-slate-50/70 p-7 shadow-card">
+        <div class="flex gap-1 text-solar-500">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
         </div>
-        <p class="text-white/70 text-sm leading-relaxed flex-1">"Contraté el plan de mantenimiento anual y valió cada peso. Detectaron y corrigieron un detalle antes de que afectara la producción. Siempre atentos por WhatsApp."</p>
-        <div class="flex items-center gap-3 mt-6 pt-6 border-t border-white/8">
-          <span class="w-11 h-11 rounded-full bg-gradient-to-br from-sun-400 to-sun-700 flex items-center justify-center font-display font-bold text-ink">LC</span>
+        <p class="mt-5 text-sm leading-relaxed text-slate-700">
+          "Nos explicaron todo con números, no con promesas. Pasamos de pagar $4,200 bimestrales a prácticamente cero.
+          La instalación fue limpia y ordenada, dejaron el techo mejor de como estaba."
+        </p>
+        <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-navy-900 font-display text-sm font-bold text-solar-400">MR</span>
           <div>
-            <div class="font-semibold text-sm">Lucía Carranza</div>
-            <div class="text-xs text-white/45">Residencial · Querétaro</div>
+            <p class="text-sm font-semibold text-navy-900">María Robles</p>
+            <p class="text-xs text-slate-500">Casa residencial · Juriquilla</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl border border-slate-200 bg-slate-50/70 p-7 shadow-card" style="transition-delay:.08s">
+        <div class="flex gap-1 text-solar-500">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+        </div>
+        <p class="mt-5 text-sm leading-relaxed text-slate-700">
+          "Tengo dos autos eléctricos y el recibo se me disparó. SHELDA dimensionó el sistema considerando la carga de los
+          vehículos y las minisplits. El ahorro fue inmediato desde el primer bimestre."
+        </p>
+        <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-navy-900 font-display text-sm font-bold text-solar-400">JL</span>
+          <div>
+            <p class="text-sm font-semibold text-navy-900">Jorge Landa</p>
+            <p class="text-xs text-slate-500">Residencial + 2 EV · El Marqués</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl border border-slate-200 bg-slate-50/70 p-7 shadow-card" style="transition-delay:.16s">
+        <div class="flex gap-1 text-solar-500">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21.2 8 13.8l-6-4.4h7.6z"/></svg>
+        </div>
+        <p class="mt-5 text-sm leading-relaxed text-slate-700">
+          "Llevamos 4 años con ellos. Instalaron en nuestra nave y ahora el contrato de mantenimiento anual
+          nos ha mantenido la generación por encima del 97%. Muy profesionales."
+        </p>
+        <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-navy-900 font-display text-sm font-bold text-solar-400">CA</span>
+          <div>
+            <p class="text-sm font-semibold text-navy-900">Comercializadora Alver</p>
+            <p class="text-xs text-slate-500">Sistema comercial · Parque Industrial QRO</p>
           </div>
         </div>
       </div>
@@ -961,693 +929,475 @@ input:focus, textarea:focus, select:focus {
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="relative py-24">
-  <div class="max-w-4xl mx-auto px-5 md:px-8">
-    <div class="text-center">
-      <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase justify-center">Preguntas frecuentes</span>
-      <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5">Resolvemos <span class="text-grad">tus dudas</span></h2>
-    </div>
-
-    <div class="mt-12 space-y-4">
-      <div class="reveal faq-item glass rounded-2xl border border-white/8">
-        <button class="faq-q w-full flex items-center justify-between gap-4 p-6 text-left">
-          <span class="font-display font-semibold">¿Cuánto puedo ahorrar con paneles solares?</span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer"><p class="px-6 pb-6 text-sm text-white/60 leading-relaxed">La mayoría de nuestros clientes reduce su recibo entre un 90% y 95%. El ahorro exacto depende de tu consumo, la tarifa y el espacio disponible. Con nuestra calculadora puedes obtener una estimación inmediata, y con el diagnóstico gratuito, una cifra exacta.</p></div>
-      </div>
-      <div class="reveal faq-item glass rounded-2xl border border-white/8" style="transition-delay:.08s">
-        <button class="faq-q w-full flex items-center justify-between gap-4 p-6 text-left">
-          <span class="font-display font-semibold">¿Qué garantías ofrecen?</span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer"><p class="px-6 pb-6 text-sm text-white/60 leading-relaxed">Paneles con garantía de producto de 12 a 15 años y garantía de producción lineal de 25 años; inversores de 5 a 10 años; y nuestra garantía de instalación por escrito de 5 años. Además, soporte post-venta de por vida.</p></div>
-      </div>
-      <div class="reveal faq-item glass rounded-2xl border border-white/8" style="transition-delay:.16s">
-        <button class="faq-q w-full flex items-center justify-between gap-4 p-6 text-left">
-          <span class="font-display font-semibold">¿Cuánto tiempo toma la instalación?</span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer"><p class="px-6 pb-6 text-sm text-white/60 leading-relaxed">Un sistema residencial típico se instala en 3 a 5 días hábiles. Proyectos comerciales e industriales varían según la potencia. Nosotros gestionamos todo el trámite de interconexión ante CFE para que tú no te preocupes por nada.</p></div>
-      </div>
-      <div class="reveal faq-item glass rounded-2xl border border-white/8" style="transition-delay:.24s">
-        <button class="faq-q w-full flex items-center justify-between gap-4 p-6 text-left">
-          <span class="font-display font-semibold">¿Los paneles funcionan en días nublados?</span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer"><p class="px-6 pb-6 text-sm text-white/60 leading-relaxed">Sí. Los paneles generan energía con luz difusa, aunque a menor capacidad (10–25%). El sistema está dimensionado considerando el clima de tu región durante todo el año, por lo que tu ahorro anual está garantizado.</p></div>
-      </div>
-      <div class="reveal faq-item glass rounded-2xl border border-white/8" style="transition-delay:.32s">
-        <button class="faq-q w-full flex items-center justify-between gap-4 p-6 text-left">
-          <span class="font-display font-semibold">¿Qué mantenimiento necesitan los paneles?</span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer"><p class="px-6 pb-6 text-sm text-white/60 leading-relaxed">Muy poco: limpieza de módulos 2 a 4 veces al año y una revisión eléctrica anual. Nuestros planes de mantenimiento incluyen limpieza profesional, termografía, torqueo de conexiones y monitoreo continuo de producción.</p></div>
-      </div>
-      <div class="reveal faq-item glass rounded-2xl border border-white/8" style="transition-delay:.4s">
-        <button class="faq-q w-full flex items-center justify-between gap-4 p-6 text-left">
-          <span class="font-display font-semibold">¿Qué pasa con la energía que no uso?</span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer"><p class="px-6 pb-6 text-sm text-white/60 leading-relaxed">Con la interconexión a la red de CFE (medición neta), los excedentes que generas se inyectan a la red y se acreditan a tu favor, reduciendo aún más tu recibo. También ofrecemos sistemas con baterías para máxima independencia.</p></div>
-      </div>
+<!-- ================= CTA ================= -->
+<section class="relative overflow-hidden bg-gradient-to-br from-solar-500 via-solar-500 to-solar-600 py-16 lg:py-20">
+  <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 30%, #fff 0, transparent 40%), radial-gradient(circle at 80% 70%, #fff 0, transparent 40%);"></div>
+  <div class="relative mx-auto max-w-5xl px-5 text-center sm:px-6">
+    <h2 class="font-display text-3xl font-extrabold leading-tight tracking-tight text-navy-950 sm:text-4xl">
+      Tu recibo de luz no tiene por qué subir cada año.
+    </h2>
+    <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-navy-900/80">
+      Agenda tu estudio energético gratuito. Visitamos tu propiedad en Querétaro y te entregamos una propuesta
+      técnica con números reales, sin compromiso.
+    </p>
+    <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+      <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20quiero%20agendar%20un%20estudio%20energ%C3%A9tico%20gratuito." target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center gap-2 rounded-xl bg-navy-950 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-navy-900/25 transition hover:-translate-y-0.5 hover:bg-navy-900">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 text-eco-400" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 01-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 015.82 2.41 8.16 8.16 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+        Agendar por WhatsApp
+      </a>
+      <a href="tel:+524421234567"
+         class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-navy-950/25 px-8 py-4 text-sm font-bold text-navy-950 transition hover:border-navy-950/60 hover:bg-navy-950/5">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Llamar ahora
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA BANNER ============ -->
-<section class="relative py-20">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="reveal relative rounded-[32px] overflow-hidden border border-sun-500/25">
-      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1800&auto=format&fit=crop" alt="Campo de paneles solares" class="absolute inset-0 w-full h-full object-cover"/>
-      <div class="absolute inset-0" style="background:linear-gradient(100deg, rgba(7,11,20,.96) 20%, rgba(7,11,20,.75) 60%, rgba(232,130,12,.3) 100%)"></div>
-      <div class="relative p-10 md:p-16 lg:p-20 max-w-2xl">
-        <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight">¿Listo para generar tu <span class="text-grad">propia energía?</span></h2>
-        <p class="mt-5 text-white/65 leading-relaxed">Agenda hoy tu diagnóstico gratuito. Un asesor experto te contactará en menos de 24 horas con una propuesta a la medida.</p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="https://wa.me/5215584213690?text=Hola%20SHELDA%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" class="btn-sun px-8 py-4 rounded-full text-sm flex items-center gap-2">
-            Agendar diagnóstico gratis
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <a href="tel:+525584213690" class="btn-ghost px-8 py-4 rounded-full text-sm font-semibold flex items-center gap-2">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Llamar ahora
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACTO ============ -->
-<section id="contacto" class="relative py-24 bg-panel/40 overflow-hidden">
-  <div class="orb w-[400px] h-[400px] bg-sun-600/08 top-10 -right-48"></div>
-
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="reveal sec-label text-sun-500 text-xs font-semibold tracking-[0.3em] uppercase justify-center">06 — Contacto</span>
-      <h2 class="reveal font-display font-bold text-4xl md:text-5xl mt-5">Hablemos de <span class="text-grad">tu proyecto</span></h2>
-      <p class="reveal mt-5 text-white/55">Elige el canal que prefieras. Respondemos rápido, siempre con un asesor humano y experto.</p>
+<!-- ================= CONTACTO ================= -->
+<section id="contacto" class="bg-white py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-solar-600">Contacto</span>
+      <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+        Hablemos de tu proyecto
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-600">
+        Elige el canal que más te acomode. Respondemos en horario de oficina y agendamos visita técnica en Querétaro y zona metropolitana.
+      </p>
     </div>
 
-    <!-- Contact channels -->
-    <div class="grid md:grid-cols-3 gap-6 mt-14">
-      <!-- Phone -->
-      <div class="reveal service-card glass rounded-3xl p-8 border border-white/8 text-center">
-        <span class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-sun-400/20 to-sun-700/20 border border-sun-500/30 flex items-center justify-center">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </span>
-        <h3 class="font-display font-bold text-xl mt-5">Teléfono</h3>
-        <p class="text-sm text-white/50 mt-2">Lun–Vie 9:00–18:00 · Sáb 9:00–14:00</p>
-        <a href="tel:+525584213690" class="block mt-4 font-display font-semibold text-lg text-sun-400 hover:text-sun-300 transition-colors">+52 (55) 8421 3690</a>
-        <button data-copy="+525584213690" class="mt-4 text-xs text-white/45 hover:text-sun-400 transition-colors inline-flex items-center gap-1.5 border border-white/12 rounded-full px-4 py-2">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copiar número
-        </button>
-      </div>
-
-      <!-- Email -->
-      <div class="reveal service-card glass rounded-3xl p-8 border border-white/8 text-center" style="transition-delay:.12s">
-        <span class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-sun-400/20 to-sun-700/20 border border-sun-500/30 flex items-center justify-center">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </span>
-        <h3 class="font-display font-bold text-xl mt-5">Correo</h3>
-        <p class="text-sm text-white/50 mt-2">Respondemos en menos de 24 horas</p>
-        <a href="mailto:contacto@shelda.mx?subject=Cotizaci%C3%B3n%20de%20paneles%20solares" class="block mt-4 font-display font-semibold text-lg text-sun-400 hover:text-sun-300 transition-colors">contacto@shelda.mx</a>
-        <button data-copy="contacto@shelda.mx" class="mt-4 text-xs text-white/45 hover:text-sun-400 transition-colors inline-flex items-center gap-1.5 border border-white/12 rounded-full px-4 py-2">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copiar correo
-        </button>
-      </div>
-
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
       <!-- WhatsApp -->
-      <div class="reveal service-card glass rounded-3xl p-8 border border-white/8 text-center" style="transition-delay:.24s">
-        <span class="mx-auto w-16 h-16 rounded-2xl flex items-center justify-center" style="background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3)">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </span>
-        <h3 class="font-display font-bold text-xl mt-5">WhatsApp</h3>
-        <p class="text-sm text-white/50 mt-2">Atención inmediata en horario laboral</p>
-        <a href="https://wa.me/5215584213690" target="_blank" rel="noopener" class="block mt-4 font-display font-semibold text-lg hover:opacity-80 transition-opacity" style="color:#25D366">+52 1 55 8421 3690</a>
-        <a href="https://wa.me/5215584213690?text=Hola%20SHELDA%2C%20quiero%20informaci%C3%B3n%20sobre%20paneles%20solares." target="_blank" rel="noopener" class="mt-4 text-xs inline-flex items-center gap-1.5 rounded-full px-4 py-2 font-semibold text-ink transition-transform hover:scale-105" style="background:#25D366">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          Abrir chat
-        </a>
-      </div>
+      <a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20me%20interesa%20cotizar%20un%20sistema%20fotovoltaico." target="_blank" rel="noopener"
+         class="reveal group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-eco-500/40 hover:shadow-soft">
+        <div class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-eco-500/10 blur-2xl transition group-hover:bg-eco-500/20"></div>
+        <div class="relative">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-eco-500 to-eco-600 shadow-lg shadow-eco-600/25">
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-white" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 01-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 015.82 2.41 8.16 8.16 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+          </span>
+          <h3 class="mt-6 font-display text-lg font-bold text-navy-900">WhatsApp</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">La vía más rápida. Enviamos cotización y fotografías de proyectos similares.</p>
+          <p class="mt-5 font-display text-base font-bold text-eco-600">+52 442 123 4567</p>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900">
+            Abrir chat
+            <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Teléfono -->
+      <a href="tel:+524421234567"
+         class="reveal group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-solar-400/50 hover:shadow-soft" style="transition-delay:.08s">
+        <div class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-solar-400/10 blur-2xl transition group-hover:bg-solar-400/25"></div>
+        <div class="relative">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-solar-400 to-solar-600 shadow-lg shadow-solar-600/25">
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-navy-950" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </span>
+          <h3 class="mt-6 font-display text-lg font-bold text-navy-900">Llamada directa</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Atención personalizada de lunes a viernes de 9:00 a 18:00 h y sábados de 9:00 a 14:00 h.</p>
+          <p class="mt-5 font-display text-base font-bold text-solar-600">+52 442 123 4567</p>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900">
+            Marcar ahora
+            <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Correo -->
+      <a href="mailto:contacto@shelda.com.mx?subject=Cotizaci%C3%B3n%20de%20sistema%20fotovoltaico&body=Hola%20SHELDA%2C%20me%20interesa%20cotizar%20un%20sistema%20fotovoltaico.%0A%0ANombre%3A%0AUbicaci%C3%B3n%3A%0AConsumo%20promedio%20bimestral%3A"
+         class="reveal group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-navy-700/40 hover:shadow-soft" style="transition-delay:.16s">
+        <div class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-navy-700/10 blur-2xl transition group-hover:bg-navy-700/20"></div>
+        <div class="relative">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-navy-800 to-navy-950 shadow-lg shadow-navy-900/25">
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-solar-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+          </span>
+          <h3 class="mt-6 font-display text-lg font-bold text-navy-900">Correo electrónico</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Para licitaciones, proyectos comerciales, facturación y documentación técnica.</p>
+          <p class="mt-5 break-all font-display text-base font-bold text-navy-800">contacto@shelda.com.mx</p>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900">
+            Escribir correo
+            <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
     </div>
 
-    <!-- Form + info -->
-    <div class="grid lg:grid-cols-5 gap-8 mt-10">
-      <!-- Form -->
-      <div class="reveal lg:col-span-3 glass rounded-[28px] p-8 md:p-10 border border-white/10">
-        <h3 class="font-display font-bold text-2xl">Solicita tu cotización gratuita</h3>
-        <p class="text-sm text-white/50 mt-2">Completa el formulario y te contactaremos por WhatsApp con tu propuesta.</p>
-
-        <form id="quoteForm" class="mt-8 grid sm:grid-cols-2 gap-5">
-          <div>
-            <label class="text-xs font-medium text-white/60 block mb-2">Nombre completo *</label>
-            <input required id="fName" type="text" placeholder="Ej. Ana Martínez" class="w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3.5 text-sm placeholder:text-white/25 transition-all"/>
-          </div>
-          <div>
-            <label class="text-xs font-medium text-white/60 block mb-2">Teléfono / WhatsApp *</label>
-            <input required id="fPhone" type="tel" placeholder="Ej. 55 1234 5678" class="w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3.5 text-sm placeholder:text-white/25 transition-all"/>
-          </div>
-          <div>
-            <label class="text-xs font-medium text-white/60 block mb-2">Correo electrónico</label>
-            <input id="fEmail" type="email" placeholder="tucorreo@ejemplo.com" class="w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3.5 text-sm placeholder:text-white/25 transition-all"/>
-          </div>
-          <div>
-            <label class="text-xs font-medium text-white/60 block mb-2">Servicio de interés *</label>
-            <select required id="fService" class="w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3.5 text-sm text-white/80 transition-all" style="appearance:none;">
-              <option value="" class="bg-panel">Selecciona una opción</option>
-              <option value="Venta de sistema fotovoltaico" class="bg-panel">Venta de sistema fotovoltaico</option>
-              <option value="Instalación de paneles solares" class="bg-panel">Instalación de paneles solares</option>
-              <option value="Mantenimiento de sistema existente" class="bg-panel">Mantenimiento de sistema existente</option>
-              <option value="Proyecto comercial o industrial" class="bg-panel">Proyecto comercial o industrial</option>
-            </select>
-          </div>
-          <div class="sm:col-span-2">
-            <label class="text-xs font-medium text-white/60 block mb-2">Cuéntanos sobre tu proyecto</label>
-            <textarea id="fMsg" rows="4" placeholder="Ej. Pago $3,500 de luz al mes y tengo un techo de aproximadamente 60 m²..." class="w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3.5 text-sm placeholder:text-white/25 transition-all resize-none"></textarea>
-          </div>
-          <div class="sm:col-span-2">
-            <button type="submit" class="btn-sun w-full py-4 rounded-full text-sm flex items-center justify-center gap-2">
-              Enviar y continuar por WhatsApp
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </button>
-            <p class="text-[11px] text-white/35 mt-3 text-center">Al enviar, se abrirá WhatsApp con tu mensaje listo. Sin spam, sin compromiso.</p>
-          </div>
-        </form>
+    <div class="reveal mt-8 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50/70 p-6 sm:grid-cols-3 sm:p-8">
+      <div class="flex items-start gap-3">
+        <svg viewBox="0 0 24 24" class="mt-0.5 h-5 w-5 shrink-0 text-solar-600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-navy-900">Cobertura</p>
+          <p class="mt-1 text-sm text-slate-600">Querétaro, Corregidora, El Marqués, Apaseo el Grande y todo el Bajío.</p>
+        </div>
       </div>
-
-      <!-- Info side -->
-      <div class="lg:col-span-2 space-y-6">
-        <div class="reveal glass rounded-[28px] p-8 border border-white/10">
-          <h4 class="font-display font-bold text-lg flex items-center gap-2">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Oficinas centrales
-          </h4>
-          <p class="text-sm text-white/55 mt-3 leading-relaxed">Av. Insurgentes Sur 1425, Piso 8<br>Col. Insurgentes Mixcoac, CDMX, 03920</p>
-          <p class="text-sm text-white/55 mt-3">Cobertura de instalación en <strong class="text-sun-400">toda la República Mexicana</strong>.</p>
+      <div class="flex items-start gap-3">
+        <svg viewBox="0 0 24 24" class="mt-0.5 h-5 w-5 shrink-0 text-solar-600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-navy-900">Horario</p>
+          <p class="mt-1 text-sm text-slate-600">Lun – Vie 9:00 a 18:00 h · Sáb 9:00 a 14:00 h</p>
         </div>
-
-        <div class="reveal glass rounded-[28px] p-8 border border-white/10" style="transition-delay:.1s">
-          <h4 class="font-display font-bold text-lg flex items-center gap-2">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Horario de atención
-          </h4>
-          <div class="mt-3 space-y-2 text-sm">
-            <div class="flex justify-between text-white/55"><span>Lunes a Viernes</span><span class="text-white/80">9:00 – 18:00</span></div>
-            <div class="flex justify-between text-white/55"><span>Sábados</span><span class="text-white/80">9:00 – 14:00</span></div>
-            <div class="flex justify-between text-white/55"><span>Emergencias 24/7</span><span class="text-sun-400">Clientes con plan</span></div>
-          </div>
-        </div>
-
-        <div class="reveal rounded-[28px] p-8 border border-sun-500/30" style="background:linear-gradient(135deg,rgba(255,176,32,.1),rgba(255,138,0,.03));transition-delay:.2s">
-          <div class="flex items-center gap-3">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            <h4 class="font-display font-bold text-lg">Compra protegida</h4>
-          </div>
-          <p class="text-sm text-white/60 mt-3 leading-relaxed">Contrato por escrito, póliza de responsabilidad civil y garantías respaldadas por fabricante. Tu inversión está segura con nosotros.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <svg viewBox="0 0 24 24" class="mt-0.5 h-5 w-5 shrink-0 text-solar-600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-navy-900">Garantía</p>
+          <p class="mt-1 text-sm text-slate-600">5 años en instalación y hasta 25 años en paneles, por escrito.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="relative border-t border-white/8 pt-16 pb-8" style="border-color:rgba(255,255,255,.07)">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy-950 pt-16 pb-8">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="grid gap-10 pb-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
       <div>
-        <a href="#inicio" class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-sun-400 to-sun-700">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#070B14" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="#070B14" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/></svg>
+        <div class="flex items-center gap-3">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-solar-400 to-solar-600">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 text-navy-950" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+            </svg>
           </span>
-          <span class="leading-none">
-            <span class="block font-display font-bold tracking-[0.18em]">SHELDA</span>
-            <span class="block text-[9px] tracking-[0.42em] text-sun-500 uppercase">vida solar</span>
-          </span>
-        </a>
-        <p class="text-sm text-white/45 mt-5 leading-relaxed">10 años transformando la energía del sol en ahorro, independencia y futuro para hogares y empresas mexicanas.</p>
+          <div>
+            <p class="font-display text-lg font-extrabold tracking-tight text-white">SHELDA</p>
+            <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-solar-400/90">Sistemas Fotovoltaicos</p>
+          </div>
+        </div>
+        <p class="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
+          12 años diseñando, instalando y manteniendo sistemas solares en Querétaro.
+          Ingeniería propia, resultados verificables.
+        </p>
+        <div class="mt-6 flex gap-3">
+          <a href="https://wa.me/524421234567" target="_blank" rel="noopener" aria-label="WhatsApp"
+             class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-eco-500/40 hover:bg-eco-500/10 hover:text-eco-400">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 01-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 015.82 2.41 8.16 8.16 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+          </a>
+          <a href="tel:+524421234567" aria-label="Teléfono"
+             class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-solar-400/40 hover:bg-solar-400/10 hover:text-solar-400">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </a>
+          <a href="mailto:contacto@shelda.com.mx" aria-label="Correo"
+             class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-solar-400/40 hover:bg-solar-400/10 hover:text-solar-400">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+          </a>
+        </div>
       </div>
 
       <div>
-        <h5 class="font-display font-semibold text-sm tracking-widest uppercase text-white/70 mb-5">Navegación</h5>
-        <ul class="space-y-3 text-sm text-white/45">
-          <li><a href="#nosotros" class="hover:text-sun-400 transition-colors">Nosotros</a></li>
-          <li><a href="#servicios" class="hover:text-sun-400 transition-colors">Servicios</a></li>
-          <li><a href="#calculadora" class="hover:text-sun-400 transition-colors">Calculadora solar</a></li>
-          <li><a href="#proyectos" class="hover:text-sun-400 transition-colors">Proyectos</a></li>
-          <li><a href="#contacto" class="hover:text-sun-400 transition-colors">Contacto</a></li>
+        <p class="font-display text-sm font-bold uppercase tracking-wider text-white">Servicios</p>
+        <ul class="mt-5 space-y-3 text-sm text-slate-400">
+          <li><a href="#servicios" class="transition hover:text-solar-400">Venta de equipo</a></li>
+          <li><a href="#servicios" class="transition hover:text-solar-400">Instalación certificada</a></li>
+          <li><a href="#servicios" class="transition hover:text-solar-400">Mantenimiento</a></li>
+          <li><a href="#servicios" class="transition hover:text-solar-400">Estudio energético</a></li>
+          <li><a href="#calculadora" class="transition hover:text-solar-400">Calculadora solar</a></li>
         </ul>
       </div>
 
       <div>
-        <h5 class="font-display font-semibold text-sm tracking-widest uppercase text-white/70 mb-5">Servicios</h5>
-        <ul class="space-y-3 text-sm text-white/45">
-          <li><a href="#servicios" class="hover:text-sun-400 transition-colors">Venta de sistemas fotovoltaicos</a></li>
-          <li><a href="#servicios" class="hover:text-sun-400 transition-colors">Instalación profesional</a></li>
-          <li><a href="#servicios" class="hover:text-sun-400 transition-colors">Mantenimiento y monitoreo</a></li>
-          <li><a href="#servicios" class="hover:text-sun-400 transition-colors">Proyectos industriales</a></li>
+        <p class="font-display text-sm font-bold uppercase tracking-wider text-white">Empresa</p>
+        <ul class="mt-5 space-y-3 text-sm text-slate-400">
+          <li><a href="#nosotros" class="transition hover:text-solar-400">Sobre SHELDA</a></li>
+          <li><a href="#proceso" class="transition hover:text-solar-400">Nuestro proceso</a></li>
+          <li><a href="#contacto" class="transition hover:text-solar-400">Contacto</a></li>
+          <li><a href="#inicio" class="transition hover:text-solar-400">Inicio</a></li>
         </ul>
       </div>
 
       <div>
-        <h5 class="font-display font-semibold text-sm tracking-widest uppercase text-white/70 mb-5">Contacto</h5>
-        <ul class="space-y-3 text-sm text-white/45">
-          <li><a href="tel:+525584213690" class="hover:text-sun-400 transition-colors">+52 (55) 8421 3690</a></li>
-          <li><a href="mailto:contacto@shelda.mx" class="hover:text-sun-400 transition-colors">contacto@shelda.mx</a></li>
-          <li><a href="https://wa.me/5215584213690" target="_blank" rel="noopener" class="hover:text-sun-400 transition-colors">WhatsApp directo</a></li>
-          <li class="text-white/35">CDMX · Cobertura nacional</li>
+        <p class="font-display text-sm font-bold uppercase tracking-wider text-white">Contacto</p>
+        <ul class="mt-5 space-y-4 text-sm">
+          <li>
+            <a href="https://wa.me/524421234567" target="_blank" rel="noopener" class="flex items-start gap-2.5 text-slate-400 transition hover:text-eco-400">
+              <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 shrink-0" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 01-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 015.82 2.41 8.16 8.16 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+              <span>+52 442 123 4567</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+524421234567" class="flex items-start gap-2.5 text-slate-400 transition hover:text-solar-400">
+              <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>Llamar: +52 442 123 4567</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contacto@shelda.com.mx" class="flex items-start gap-2.5 break-all text-slate-400 transition hover:text-solar-400">
+              <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+              <span>contacto@shelda.com.mx</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-14 pt-7 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/35" style="border-color:rgba(255,255,255,.07)">
-      <span>© <span id="year">2025</span> SHELDA vida solar. Todos los derechos reservados.</span>
-      <span class="flex items-center gap-2">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="#FFB020" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/></svg>
-        Energía limpia, hecha por expertos.
-      </span>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
+      <p class="text-xs text-slate-500">© <span id="year">2024</span> SHELDA Sistemas Fotovoltaicos. Todos los derechos reservados.</p>
+      <p class="text-xs text-slate-600">Sitio demostrativo · Querétaro, México</p>
     </div>
   </div>
 </footer>
 
-<!-- ============ WHATSAPP FLOAT ============ -->
-<div class="wa-wrap fixed bottom-6 right-6 z-[100] flex items-center gap-3">
-  <span class="wa-tooltip glass px-4 py-2.5 rounded-full text-xs font-medium whitespace-nowrap">¿Dudas? Escríbenos ahora</span>
-  <a href="https://wa.me/5215584213690?text=Hola%20SHELDA%2C%20quiero%20informaci%C3%B3n%20sobre%20paneles%20solares." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" class="wa-pulse relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110" style="background:#25D366; box-shadow:0 10px 30px -5px rgba(37,211,102,.45)">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
-</div>
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a href="https://wa.me/524421234567?text=Hola%20SHELDA%2C%20me%20interesa%20cotizar%20un%20sistema%20fotovoltaico." target="_blank" rel="noopener" aria-label="WhatsApp"
+   class="wa-pulse fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/30 transition hover:scale-105">
+  <svg viewBox="0 0 24 24" class="h-7 w-7" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 01-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 015.82 2.41 8.16 8.16 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+</a>
 
-<!-- ============ SCRIPTS ============ -->
 <script>
-/* ============ MARQUEE BUILD ============ */
-(function(){
-  const items = ['VENTA DE SISTEMAS','INSTALACIÓN PROFESIONAL','MANTENIMIENTO ESPECIALIZADO','MONITOREO 24/7','GARANTÍA 25 AÑOS','10 AÑOS DE EXPERIENCIA'];
-  const sun = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="#FFB020" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>';
-  const html = items.map(t => '<span class="flex items-center gap-10"><span class="font-display font-semibold text-lg tracking-[0.15em] text-white/70 whitespace-nowrap">'+t+'</span>'+sun+'</span>').join('');
-  document.getElementById('marqueeA').innerHTML = html;
-  document.getElementById('marqueeB').innerHTML = html;
-})();
+(function () {
+  'use strict';
 
-/* ============ PRELOADER ============ */
-(function(){
-  const preloader = document.getElementById('preloader');
-  const fill = document.getElementById('loaderFill');
-  let done = false;
+  /* ============ Constantes técnicas ============ */
+  const KWH_POR_KW_MES = 135;      // Querétaro: ~4.5 kWh/kW/día
+  const POTENCIA_PANEL = 580;      // W
+  const AREA_PANEL = 2.3;          // m²
+  const COSTO_KW_MIN = 16000;      // MXN
+  const COSTO_KW_MAX = 22000;      // MXN
+  const CO2_KG_KWH = 0.435;        // Factor de emisión red eléctrica MX
 
-  function finish(){
-    if(done) return;
-    done = true;
-    fill.style.width = '100%';
-    setTimeout(() => {
-      preloader.classList.add('fade-out');
-      setTimeout(() => { preloader.style.display = 'none'; }, 500);
-      // Animate hero elements
-      document.querySelectorAll('.hero-anim').forEach((el, i) => {
-        setTimeout(() => {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, 100 + i * 120);
-      });
-    }, 600);
-  }
+  const mxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 });
+  const num = new Intl.NumberFormat('es-MX', { maximumFractionDigits: 0 });
+  const num1 = new Intl.NumberFormat('es-MX', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-  // Set initial state for hero anims
-  document.querySelectorAll('.hero-anim').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity .6s ease, transform .6s ease';
+  const $ = (id) => document.getElementById(id);
+
+  /* ============ Menú móvil ============ */
+  const menuBtn = $('menuBtn');
+  const mobileMenu = $('mobileMenu');
+  menuBtn.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+  });
+  document.querySelectorAll('.mobile-link').forEach(function (a) {
+    a.addEventListener('click', function () { mobileMenu.classList.add('hidden'); });
   });
 
-  window.addEventListener('load', finish);
-  setTimeout(finish, 3200);
-})();
+  /* ============ Tabs calculadora ============ */
+  const tabBtn1 = $('tabBtn1');
+  const tabBtn2 = $('tabBtn2');
+  const panel1 = $('panel1');
+  const panel2 = $('panel2');
 
-/* ============ CUSTOM CURSOR ============ */
-(function(){
-  if(!window.matchMedia('(pointer:fine)').matches) return;
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  let mx = innerWidth/2, my = innerHeight/2;
-  let rx = mx, ry = my;
-
-  window.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
-  }, {passive: true});
-
-  function loop(){
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(loop);
-  }
-  loop();
-
-  document.querySelectorAll('a, button, input, textarea, select, .faq-q').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
-  });
-})();
-
-/* ============ SUN CANVAS - Optimized ============ */
-(function(){
-  const canvas = document.getElementById('sun-canvas');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const DPR = Math.min(window.devicePixelRatio || 1, 1.5); // Lower DPR for performance
-  let w, h, cx, cy, R;
-  let isVisible = true;
-
-  function resize(){
-    const rect = canvas.parentElement.getBoundingClientRect();
-    w = rect.width; h = rect.height;
-    canvas.width = w * DPR;
-    canvas.height = h * DPR;
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    cx = w / 2; cy = h / 2;
-    R = Math.min(w, h) * 0.16;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  // Fewer particles for performance
-  const particles = [];
-  const PARTICLE_COUNT = 30;
-
-  function resetP(p, init){
-    p.a = Math.random() * Math.PI * 2;
-    p.d = init ? R * (1.1 + Math.random() * 2.2) : R * 1.1;
-    p.maxD = R * (2.2 + Math.random() * 1.4);
-    p.r = 1 + Math.random() * 1.8;
-    p.sp = 0.2 + Math.random() * 0.45;
-  }
-
-  for(let i = 0; i < PARTICLE_COUNT; i++){
-    const p = {};
-    resetP(p, true);
-    particles.push(p);
-  }
-
-  let mX = 0, mY = 0;
-  window.addEventListener('mousemove', e => {
-    mX = (e.clientX / window.innerWidth - 0.5);
-    mY = (e.clientY / window.innerHeight - 0.5);
-  }, {passive: true});
-
-  // Fewer rays
-  const RAYS = 24;
-  let lastTime = 0;
-  const targetFPS = 60;
-  const frameInterval = 1000 / targetFPS;
-
-  // Visibility observer to pause when off-screen
-  const observer = new IntersectionObserver(entries => {
-    isVisible = entries[0].isIntersecting;
-  }, {threshold: 0.1});
-  observer.observe(canvas);
-
-  function draw(timestamp){
-    requestAnimationFrame(draw);
-    if(!isVisible) return;
-
-    // Throttle frame rate
-    if(timestamp - lastTime < frameInterval) return;
-    lastTime = timestamp;
-
-    ctx.clearRect(0, 0, w, h);
-    const px = cx + mX * 18;
-    const py = cy + mY * 18;
-    const pulse = 1 + Math.sin(timestamp * 0.001) * 0.025;
-    const r = R * pulse;
-
-    // Outer glow
-    const g = ctx.createRadialGradient(px, py, 0, px, py, r * 4);
-    g.addColorStop(0, 'rgba(255,176,32,0.25)');
-    g.addColorStop(0.4, 'rgba(255,138,0,0.08)');
-    g.addColorStop(1, 'rgba(255,138,0,0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, w, h);
-
-    // Rays
-    ctx.save();
-    ctx.translate(px, py);
-    ctx.rotate(timestamp * 0.00005);
-    for(let i = 0; i < RAYS; i++){
-      const ang = (i / RAYS) * Math.PI * 2;
-      const len = r * (0.45 + 0.3 * Math.sin(timestamp * 0.0008 + i * 1.5));
-      const x1 = Math.cos(ang) * r * 1.15;
-      const y1 = Math.sin(ang) * r * 1.15;
-      const x2 = Math.cos(ang) * (r * 1.15 + len);
-      const y2 = Math.sin(ang) * (r * 1.15 + len);
-      const lg = ctx.createLinearGradient(x1, y1, x2, y2);
-      lg.addColorStop(0, 'rgba(255,200,80,0.45)');
-      lg.addColorStop(1, 'rgba(255,200,80,0)');
-      ctx.strokeStyle = lg;
-      ctx.lineWidth = 1.4;
-      ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      ctx.lineTo(x2, y2);
-      ctx.stroke();
-    }
-    ctx.restore();
-
-    // Core
-    const core = ctx.createRadialGradient(px - r * 0.3, py - r * 0.3, r * 0.1, px, py, r);
-    core.addColorStop(0, '#FFF4D8');
-    core.addColorStop(0.45, '#FFD76A');
-    core.addColorStop(1, '#FF9A1F');
-    ctx.beginPath();
-    ctx.arc(px, py, r, 0, Math.PI * 2);
-    ctx.fillStyle = core;
-    ctx.shadowColor = 'rgba(255,170,40,0.7)';
-    ctx.shadowBlur = 45;
-    ctx.fill();
-    ctx.shadowBlur = 0;
-
-    // Particles
-    for(let i = 0; i < particles.length; i++){
-      const p = particles[i];
-      p.d += p.sp;
-      if(p.d > p.maxD) resetP(p, false);
-      const x = px + Math.cos(p.a) * p.d;
-      const y = py + Math.sin(p.a) * p.d;
-      const fade = Math.max(0, 1 - (p.d - R * 1.1) / (p.maxD - R * 1.1));
-      ctx.beginPath();
-      ctx.arc(x, y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,200,90,' + (0.5 * fade).toFixed(3) + ')';
-      ctx.fill();
+  function setTab(n) {
+    const active = 'tab-active';
+    const inactive = ['text-slate-600', 'hover:text-navy-900'];
+    if (n === 1) {
+      tabBtn1.classList.add(active);
+      tabBtn1.classList.remove('text-slate-600', 'hover:text-navy-900');
+      tabBtn2.classList.remove(active);
+      tabBtn2.classList.add('text-slate-600', 'hover:text-navy-900');
+      panel1.classList.remove('hidden');
+      panel2.classList.add('hidden');
+    } else {
+      tabBtn2.classList.add(active);
+      tabBtn2.classList.remove('text-slate-600', 'hover:text-navy-900');
+      tabBtn1.classList.remove(active);
+      tabBtn1.classList.add('text-slate-600', 'hover:text-navy-900');
+      panel2.classList.remove('hidden');
+      panel1.classList.add('hidden');
     }
   }
-  requestAnimationFrame(draw);
-})();
+  tabBtn1.addEventListener('click', function () { setTab(1); });
+  tabBtn2.addEventListener('click', function () { setTab(2); });
 
-/* ============ NAV SCROLL + PROGRESS ============ */
-(function(){
-  const nav = document.getElementById('nav');
-  const prog = document.getElementById('progress');
-  let ticking = false;
+  /* ============ Calculadora 1: Recibo de luz ============ */
+  const billAmount = $('billAmount');
+  const billRate = $('billRate');
 
-  window.addEventListener('scroll', () => {
-    if(!ticking){
-      requestAnimationFrame(() => {
-        if(window.scrollY > 40) nav.classList.add('nav-scrolled');
-        else nav.classList.remove('nav-scrolled');
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-        ticking = false;
-      });
-      ticking = true;
+  function calcBill() {
+    const montoBimestral = parseFloat(billAmount.value) || 0;
+    const tarifa = parseFloat(billRate.value) || 3.5;
+
+    $('billAmountOut').textContent = mxn.format(montoBimestral);
+    $('billRateOut').textContent = '$' + num1.format(tarifa);
+
+    const kwhBimestral = tarifa > 0 ? (montoBimestral / tarifa) : 0;
+    const kwhMensual = kwhBimestral / 2;
+
+    if (kwhMensual < 10) {
+      $('c1-kw').textContent = '—';
+      $('c1-panels').textContent = '—';
+      $('c1-area').textContent = '—';
+      $('c1-gen').textContent = '—';
+      $('c1-cost').textContent = '—';
+      $('c1-ahorro').textContent = '—';
+      $('c1-payback').textContent = '—';
+      $('c1-co2').textContent = '—';
+      $('c1-consumoLbl').textContent = '0 kWh';
+      $('c1-genLbl').textContent = '0 kWh';
+      $('c1-barConsumo').style.width = '0%';
+      $('c1-barGen').style.width = '0%';
+      return;
     }
-  }, {passive: true});
-})();
 
-/* ============ MOBILE MENU ============ */
-(function(){
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  const lines = btn.querySelectorAll('.menu-line');
-  let open = false;
+    let kw = kwhMensual / KWH_POR_KW_MES;
+    kw = Math.round(kw * 10) / 10;
+    if (kw < 0.5) kw = 0.5;
 
-  function toggle(force){
-    open = (typeof force === 'boolean') ? force : !open;
-    menu.classList.toggle('hidden', !open);
-    menu.classList.toggle('flex', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-    lines[0].style.transform = open ? 'translateY(8px) rotate(45deg)' : '';
-    lines[1].style.opacity = open ? '0' : '1';
-    lines[2].style.transform = open ? 'translateY(-8px) rotate(-45deg)' : '';
+    const paneles = Math.ceil((kw * 1000) / POTENCIA_PANEL);
+    const area = Math.round(paneles * AREA_PANEL);
+    const generacionMensual = Math.round(kw * KWH_POR_KW_MES);
+    const costoMin = kw * COSTO_KW_MIN;
+    const costoMax = kw * COSTO_KW_MAX;
+    const costoMedio = (costoMin + costoMax) / 2;
+
+    const ahorroAnual = generacionMensual * 12 * tarifa;
+    const payback = ahorroAnual > 0 ? (costoMedio / ahorroAnual) : 0;
+    const co2 = (generacionMensual * 12 * CO2_KG_KWH) / 1000;
+
+    const maxVal = Math.max(kwhMensual, generacionMensual, 1);
+
+    $('c1-kw').textContent = num1.format(kw);
+    $('c1-panels').textContent = paneles;
+    $('c1-area').textContent = area;
+    $('c1-gen').textContent = num.format(generacionMensual);
+    $('c1-cost').textContent = '$' + num.format(costoMedio / 1000) + 'k';
+    $('c1-ahorro').textContent = mxn.format(ahorroAnual);
+    $('c1-payback').textContent = num1.format(payback) + ' años';
+    $('c1-co2').textContent = num1.format(co2) + ' t';
+
+    const cobertura = Math.min(100, Math.round((generacionMensual / kwhMensual) * 100));
+    $('c1-cover').textContent = cobertura + '%';
+
+    $('c1-consumoLbl').textContent = num.format(kwhMensual) + ' kWh';
+    $('c1-genLbl').textContent = num.format(generacionMensual) + ' kWh';
+    $('c1-barConsumo').style.width = Math.round((kwhMensual / maxVal) * 100) + '%';
+    $('c1-barGen').style.width = Math.round((generacionMensual / maxVal) * 100) + '%';
   }
 
-  btn.addEventListener('click', () => toggle());
-  menu.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', () => toggle(false)));
-})();
+  billAmount.addEventListener('input', calcBill);
+  billRate.addEventListener('input', calcBill);
 
-/* ============ SCROLL REVEALS - Using IntersectionObserver ============ */
-(function(){
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
+  /* ============ Calculadora 2: Equipos y autos ============ */
+  const baseKwh = $('baseKwh');
+  const evCount = $('evCount');
+  const acCount = $('acCount');
+  const acSize = $('acSize');
+  const acHours = $('acHours');
+
+  const KWH_POR_EV_MES = 250;
+  const FACTOR_AC = 0.75;
+
+  function calcLoads() {
+    const base = parseFloat(baseKwh.value) || 0;
+    const evs = parseInt(evCount.value, 10) || 0;
+    const aires = parseInt(acCount.value, 10) || 0;
+    const potenciaAC = parseFloat(acSize.value) || 1.6;
+    const horas = parseFloat(acHours.value) || 0;
+
+    $('baseKwhOut').textContent = num.format(base);
+    $('evCountOut').textContent = evs;
+    $('acCountOut').textContent = aires;
+    $('acHoursOut').textContent = horas;
+
+    const kwhEV = evs * KWH_POR_EV_MES;
+    const kwhAC = aires * potenciaAC * horas * 30 * FACTOR_AC;
+    const total = base + kwhEV + kwhAC;
+
+    if (total < 10) {
+      $('c2-kw').textContent = '—';
+      $('c2-panels').textContent = '—';
+      $('c2-area').textContent = '—';
+      $('c2-gen').textContent = '—';
+      $('c2-cost').textContent = '—';
+      $('c2-ahorro').textContent = '—';
+      $('c2-payback').textContent = '—';
+      $('c2-co2').textContent = '—';
+      $('c2-totalLbl').textContent = '0 kWh/mes';
+      $('c2-consumoLbl').textContent = '0 kWh';
+      $('c2-genLbl').textContent = '0 kWh';
+      $('c2-barConsumo').style.width = '0%';
+      $('c2-barGen').style.width = '0%';
+      return;
+    }
+
+    let kw = total / KWH_POR_KW_MES;
+    kw = Math.round(kw * 10) / 10;
+    if (kw < 0.5) kw = 0.5;
+
+    const paneles = Math.ceil((kw * 1000) / POTENCIA_PANEL);
+    const area = Math.round(paneles * AREA_PANEL);
+    const generacionMensual = Math.round(kw * KWH_POR_KW_MES);
+    const costoMin = kw * COSTO_KW_MIN;
+    const costoMax = kw * COSTO_KW_MAX;
+    const costoMedio = (costoMin + costoMax) / 2;
+
+    const tarifaRef = 3.5;
+    const ahorroAnual = generacionMensual * 12 * tarifaRef;
+    const payback = ahorroAnual > 0 ? (costoMedio / ahorroAnual) : 0;
+    const co2 = (generacionMensual * 12 * CO2_KG_KWH) / 1000;
+
+    const maxVal = Math.max(total, generacionMensual, 1);
+
+    $('c2-kw').textContent = num1.format(kw);
+    $('c2-panels').textContent = paneles;
+    $('c2-area').textContent = area;
+    $('c2-gen').textContent = num.format(generacionMensual);
+    $('c2-cost').textContent = '$' + num.format(costoMedio / 1000) + 'k';
+    $('c2-ahorro').textContent = mxn.format(ahorroAnual);
+    $('c2-payback').textContent = num1.format(payback) + ' años';
+    $('c2-co2').textContent = num1.format(co2) + ' t';
+
+    $('c2-totalLbl').textContent = num.format(total) + ' kWh/mes';
+    $('c2-consumoLbl').textContent = num.format(total) + ' kWh';
+    $('c2-genLbl').textContent = num.format(generacionMensual) + ' kWh';
+    $('c2-base').textContent = num.format(base);
+    $('c2-ev').textContent = num.format(kwhEV);
+    $('c2-ac').textContent = num.format(Math.round(kwhAC));
+    $('c2-barConsumo').style.width = Math.round((total / maxVal) * 100) + '%';
+    $('c2-barGen').style.width = Math.round((generacionMensual / maxVal) * 100) + '%';
+  }
+
+  [baseKwh, evCount, acCount, acSize, acHours].forEach(function (el) {
+    el.addEventListener('input', calcLoads);
+    el.addEventListener('change', calcLoads);
   });
 
-  reveals.forEach(el => observer.observe(el));
-})();
-
-/* ============ COUNTERS ============ */
-(function(){
-  const counters = document.querySelectorAll('[data-count]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const el = entry.target;
-        const target = parseFloat(el.dataset.count);
-        let current = 0;
-        const duration = 1800;
-        const startTime = performance.now();
-
-        function update(now){
-          const elapsed = now - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          // Ease out cubic
-          const eased = 1 - Math.pow(1 - progress, 3);
-          current = Math.round(eased * target);
-          el.textContent = current.toLocaleString('es-MX');
-          if(progress < 1) requestAnimationFrame(update);
+  /* ============ Reveal on scroll ============ */
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
         }
-        requestAnimationFrame(update);
-        observer.unobserve(el);
-      }
-    });
-  }, {threshold: 0.5});
-
-  counters.forEach(el => observer.observe(el));
-})();
-
-/* ============ SERVICE CARD SPOTLIGHT ============ */
-(function(){
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
-})();
-
-/* ============ CALCULATOR ============ */
-(function(){
-  const slider = document.getElementById('billRange');
-  const billLabel = document.getElementById('billLabel');
-  const outKwp = document.getElementById('outKwp');
-  const outPanels = document.getElementById('outPanels');
-  const outMonthly = document.getElementById('outMonthly');
-  const outSave25 = document.getElementById('outSave25');
-  const outPayback = document.getElementById('outPayback');
-  const paybackBar = document.getElementById('paybackBar');
-  const insight = document.getElementById('insightText');
-  const waBtn = document.getElementById('calcWhatsapp');
-
-  const fmt = n => Math.round(n).toLocaleString('es-MX');
-
-  function paintTrack(){
-    const min = +slider.min, max = +slider.max, val = +slider.value;
-    const pct = ((val - min) / (max - min)) * 100;
-    slider.style.background = 'linear-gradient(to right, #FFB020 ' + pct + '%, rgba(255,255,255,0.1) ' + pct + '%)';
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
-  function calc(){
-    const bill = +slider.value;
-    const kwhMonth = bill / 3.2;
-    const kwp = (kwhMonth * 12) / 1550;
-    const panels = Math.max(2, Math.ceil(kwp / 0.55));
-    const monthlySave = bill * 0.95;
-    const annualSave = monthlySave * 12;
-    const save25 = annualSave * 25;
-    const cost = kwp * 19000;
-    const payback = Math.max(1.2, cost / annualSave);
+  /* ============ Header shadow on scroll ============ */
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }, { passive: true });
 
-    billLabel.textContent = fmt(bill);
-    outKwp.textContent = kwp.toFixed(1);
-    outPanels.textContent = panels;
-    outMonthly.textContent = fmt(monthlySave);
-    outSave25.textContent = fmt(save25);
-    outPayback.textContent = payback.toFixed(1);
-    paybackBar.style.width = Math.min(100, (payback / 25) * 100) + '%';
-
-    insight.innerHTML = 'Recuperas tu inversión en aproximadamente <strong class="text-sun-400">' + payback.toFixed(1) + ' años</strong> y disfrutas más de 20 años de energía prácticamente gratis.';
-
-    const msg = 'Hola SHELDA, usé su calculadora solar. Pago $' + fmt(bill) + ' MXN al mes de luz. Me estimaron un sistema de ' + kwp.toFixed(1) + ' kWp (' + panels + ' paneles) con ahorro de $' + fmt(monthlySave) + '/mes. Quiero una cotización exacta, por favor.';
-    waBtn.href = 'https://wa.me/5215584213690?text=' + encodeURIComponent(msg);
-    paintTrack();
+  /* ============ Contador héroe ============ */
+  const heroMetric = $('heroMetric1');
+  if (heroMetric) {
+    let baseVal = 28.4;
+    setInterval(function () {
+      baseVal = 26 + Math.random() * 6;
+      heroMetric.textContent = num1.format(baseVal);
+    }, 3200);
   }
 
-  slider.addEventListener('input', calc);
-  calc();
+  /* ============ Año dinámico ============ */
+  $('year').textContent = new Date().getFullYear();
+
+  /* ============ Inicialización ============ */
+  calcBill();
+  calcLoads();
 })();
-
-/* ============ FAQ ============ */
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-q').addEventListener('click', () => {
-    const wasOpen = item.classList.contains('open');
-    // Close all
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    // Toggle current
-    if(!wasOpen) item.classList.add('open');
-  });
-});
-
-/* ============ COPY TO CLIPBOARD ============ */
-document.querySelectorAll('[data-copy]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const text = btn.dataset.copy;
-    navigator.clipboard.writeText(text).then(() => {
-      const toast = document.getElementById('toast');
-      const msg = document.getElementById('toastMsg');
-      msg.textContent = 'Copiado: ' + text;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2500);
-    });
-  });
-});
-
-/* ============ FORM -> WHATSAPP ============ */
-document.getElementById('quoteForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const name = document.getElementById('fName').value.trim();
-  const phone = document.getElementById('fPhone').value.trim();
-  const email = document.getElementById('fEmail').value.trim();
-  const service = document.getElementById('fService').value;
-  const msg = document.getElementById('fMsg').value.trim();
-
-  let waMsg = 'Hola SHELDA, quiero solicitar una cotización gratuita.\n\n';
-  waMsg += '👤 Nombre: ' + name + '\n';
-  waMsg += '📱 Teléfono: ' + phone + '\n';
-  if(email) waMsg += '📧 Email: ' + email + '\n';
-  waMsg += '🔧 Servicio: ' + service + '\n';
-  if(msg) waMsg += '📝 Detalles: ' + msg + '\n';
-
-  window.open('https://wa.me/5215584213690?text=' + encodeURIComponent(waMsg), '_blank');
-});
-
-/* ============ YEAR ============ */
-document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>

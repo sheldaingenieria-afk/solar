@@ -29,9 +29,24 @@ tailwind.config = {
 }
 </script>
 <style>
-  html{scroll-behavior:smooth}
-html,body{height:100%;width:100%}
-body{font-family:'Inter',sans-serif;color:#0E2C4D;background:#fff;-webkit-font-smoothing:antialiased}  h1,h2,h3,h4,.font-display{font-family:'Plus Jakarta Sans',sans-serif}
+ html {
+  scroll-behavior: smooth;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #0E2C4D;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   .delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
@@ -431,7 +446,7 @@ body{font-family:'Inter',sans-serif;color:#0E2C4D;background:#fff;-webkit-font-s
             </div>
             <div class="relative">
               <span class="absolute left-4 top-1/2 -translate-y-1/2 text-brand-400 font-semibold">$</span>
-              <input id="billAmount" type="number" min="200" max="100000" step="50" value="3500" class="field pl-8 text-lg font-display font-bold">
+              <input id="billAmount" type="number" min="200" max="100000" step="50" value="3500" class="field pl-12 text-lg font-display font-bold">
               <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-brand-400">MXN</span>
             </div>
             <input id="billRange" type="range" min="500" max="30000" step="100" value="3500" class="mt-4">

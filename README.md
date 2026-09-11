@@ -182,7 +182,7 @@ body {
         </a>
         <a href="tel:" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold px-5 py-3.5 rounded-xl transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
-          442 334 4713
+          442 221 9667
         </a>
         <a href="mailto:sheldaingenieria@gmail.com" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold px-5 py-3.5 rounded-xl transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
@@ -942,7 +942,7 @@ const CFG = { hsp: 5.6, perf: 0.80, panelW: 720, panelArea: 3.5, co2: 0.438, wa:
     const tag = $('#sysTag');
     tag.textContent = kwp < 10 ? 'Residencial' : kwp < 30 ? 'Residencial Plus' : kwp < 100 ? 'Comercial' : 'Industrial';
 
-    const msg = `Hola SHELDA 👋, calculé mi sistema solar en su página web:\n\n${detail}\n\n☀️ *Resultados:*\n• Consumo estimado: ${fmt(kwhMonth)} kWh/mes\n• Sistema recomendado: *${fmt(kwp,2)} kWp* (${panels} paneles de ${CFG.panelW} W)\n• Área aproximada: ${fmt(area)} m²\n• Generación anual: ${fmt(genYear)} kWh\n• Ahorro estimado: $${fmt(saveYear)} MXN/año\n\nMe gustaría recibir una cotización formal. ¡Gracias! 😊`;
+    const msg = `Hola SHELDA, calculé mi sistema solar en su página web:\n\n${detail}\n\n *Resultados:*\n• Consumo estimado: ${fmt(kwhMonth)} kWh/mes\n• Sistema recomendado: *${fmt(kwp,2)} kWp* (${panels} paneles de ${CFG.panelW} W)\n• Área aproximada: ${fmt(area)} m²\n• Generación anual: ${fmt(genYear)} kWh\n• Ahorro estimado: $${fmt(saveYear)} MXN/año\n\nMe gustaría recibir una cotización formal. ¡Gracias! `;
     $('#waQuote').href = `https://wa.me/${CFG.wa}?text=${encodeURIComponent(msg)}`;
   }
   calc();

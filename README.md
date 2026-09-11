@@ -120,8 +120,8 @@ body {
   <div class="nav-glass bg-brand-950/70 border-b border-white/5" id="navInner">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
      <a href="#inicio" class="flex items-center gap-3">
-  <img src="LOGO SHELDA SF.png" alt="SHELDA" class="w-10 h-10 rounded-xl">
-        <div class="leading-none">
+<img src="LOGO SHELDA SF.png" alt="SHELDA" class="h-12 w-auto">
+       <div class="leading-none">
           <span class="font-display font-800 text-white text-xl tracking-[.14em] font-extrabold">SHELDA</span>
           <span class="block text-[10px] text-brand-200/80 tracking-widest uppercase mt-0.5">Energía Solar · Querétaro</span>
         </div>
@@ -767,7 +767,7 @@ body {
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12 grid md:grid-cols-3 gap-10">
     <div>
       <div class="flex items-center gap-3">
-  <img src="LOGO SHELDA SF.png" alt="SHELDA" class="w-10 h-10 rounded-xl">
+<img src="LOGO SHELDA SF.png" alt="SHELDA" class="h-12 w-auto">
         <span class="font-display font-extrabold text-white text-xl tracking-[.14em]">SHELDA</span>
       </div>
       <p class="mt-4 text-sm leading-relaxed text-brand-200/80">Sistemas fotovoltaicos en Querétaro desde 2012. Venta, instalación y mantenimiento con ingeniería certificada.</p>

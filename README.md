@@ -556,7 +556,7 @@ body{font-family:'Inter',sans-serif;color:#0E2C4D;background:#fff;-webkit-font-s
 
           <div class="grid grid-cols-2 gap-3 mt-6">
             <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
-              <p class="text-[11px] uppercase tracking-wider text-brand-200">Paneles 550 W</p>
+              <p class="text-[11px] uppercase tracking-wider text-brand-200">Paneles 720 W</p>
               <p class="font-display font-extrabold text-2xl mt-1"><span id="rPanels" class="result-num">10</span></p>
             </div>
             <div class="bg-white/5 rounded-2xl p-4 border border-white/10">

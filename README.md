@@ -257,8 +257,8 @@ body {
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl reveal">
       <p class="text-sun-600 font-semibold tracking-wider text-sm uppercase">Nuestros servicios</p>
-      <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-900 mt-3 tracking-tight">Todo el ciclo solar, en un solo equipo.</h2>
-      <p class="mt-4 text-brand-700/80 text-lg">Desde el diagnóstico hasta el mantenimiento anual. Sin intermediarios, sin sorpresas: ingeniería propia y responsabilidad total sobre tu sistema.</p>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-900 mt-3 tracking-tight">Todo el ciclo solar, en un solo lugar.</h2>
+      <p class="mt-4 text-brand-700/80 text-lg">Desde el diseño hasta pólizas de garantía. Sin intermediarios, sin sorpresas: ingeniería propia y responsabilidad total sobre tu sistema.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-6 mt-14">
       <!-- Venta -->

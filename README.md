@@ -238,7 +238,7 @@ body {
     <div class="max-w-7xl mx-auto px-5 sm:px-8 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
       <div class="reveal"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="5">0</span>+</p><p class="text-brand-200 text-sm mt-1">años de experiencia</p></div>
       <div class="reveal delay-1"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="300">0</span>+</p><p class="text-brand-300 text-sm mt-1">proyectos instalados</p></div>
-      <div class="reveal delay-2"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="9.6" data-dec="1">0</span> MW</p><p class="text-brand-200 text-sm mt-1">de potencia instalada</p></div>
+      <div class="reveal delay-2"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="3.4" data-dec="1">0</span> MW</p><p class="text-brand-200 text-sm mt-1">de potencia instalada</p></div>
       <div class="reveal delay-3"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="98">0</span>%</p><p class="text-brand-200 text-sm mt-1">clientes satisfechos</p></div>
     </div>
   </div>

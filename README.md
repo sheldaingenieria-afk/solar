@@ -2,8 +2,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHELDA | Sistemas Fotovoltaicos en Querétaro · 12 años de experiencia</title>
-<meta name="description" content="SHELDA: venta, instalación y mantenimiento de sistemas fotovoltaicos en Querétaro. 12 años de experiencia. Calcula tu sistema solar y solicita tu cotización.">
+<title>SHELDA | Sistemas Fotovoltaicos en Querétaro · 5 años de experiencia</title>
+<meta name="description" content="SHELDA: venta, instalación y mantenimiento de sistemas fotovoltaicos en Querétaro. 5 años de experiencia. Calcula tu sistema solar y solicita tu cotización.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -195,7 +195,7 @@ body {
           <span class="w-9 h-9 rounded-full ring-2 ring-brand-900 bg-gradient-to-br from-sun-300 to-sun-600"></span>
           <span class="w-9 h-9 rounded-full ring-2 ring-brand-900 bg-gradient-to-br from-brand-300 to-brand-600"></span>
           <span class="w-9 h-9 rounded-full ring-2 ring-brand-900 bg-gradient-to-br from-leaf-400 to-brand-500"></span>
-          <span class="w-9 h-9 rounded-full ring-2 ring-brand-900 bg-brand-700 grid place-items-center text-[11px] font-bold text-white">+850</span>
+          <span class="w-9 h-9 rounded-full ring-2 ring-brand-900 bg-brand-700 grid place-items-center text-[11px] font-bold text-white">+200</span>
         </div>
         <p>familias y empresas queretanas ya generan su propia energía.</p>
       </div>
@@ -237,7 +237,7 @@ body {
   <div class="relative border-t border-white/10 bg-brand-950/40">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
       <div class="reveal"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="12">0</span>+</p><p class="text-brand-200 text-sm mt-1">años de experiencia</p></div>
-      <div class="reveal delay-1"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="850">0</span>+</p><p class="text-brand-200 text-sm mt-1">proyectos instalados</p></div>
+      <div class="reveal delay-1"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="300">0</span>+</p><p class="text-brand-300 text-sm mt-1">proyectos instalados</p></div>
       <div class="reveal delay-2"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="9.6" data-dec="1">0</span> MW</p><p class="text-brand-200 text-sm mt-1">de potencia instalada</p></div>
       <div class="reveal delay-3"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="98">0</span>%</p><p class="text-brand-200 text-sm mt-1">clientes satisfechos</p></div>
     </div>
@@ -610,7 +610,7 @@ body {
         <p class="text-sun-600 font-semibold tracking-wider text-sm uppercase">Proyectos destacados</p>
         <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-900 mt-3 tracking-tight">Techos que ya trabajan para sus dueños.</h2>
       </div>
-      <p class="text-brand-700/80 md:max-w-sm">Más de 850 sistemas en Querétaro, San Juan del Río, Corregidora, El Marqués y toda la región Bajío.</p>
+      <p class="text-brand-700/80 md:max-w-sm">Más de 300 sistemas en Querétaro, San Juan del Río, Corregidora, El Marqués y toda la región Bajío.</p>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
       <div class="proj card-hover reveal h-72 bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 p-6 flex flex-col justify-end text-white">

@@ -165,7 +165,7 @@ body {
     <div class="lg:col-span-6 reveal">
       <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-sm text-brand-100">
         <span class="w-2 h-2 rounded-full bg-leaf-400 animate-pulse"></span>
-        12 años iluminando Querétaro con energía solar
+        5 años iluminando Querétaro con energía solar
       </div>
       <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.6rem] leading-[1.08] mt-6 tracking-tight">
         Energía solar que <span class="grad-text">sí paga</span>, instalada por expertos.
@@ -236,7 +236,7 @@ body {
   <!-- Stats -->
   <div class="relative border-t border-white/10 bg-brand-950/40">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="reveal"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="12">0</span>+</p><p class="text-brand-200 text-sm mt-1">años de experiencia</p></div>
+      <div class="reveal"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="5">0</span>+</p><p class="text-brand-200 text-sm mt-1">años de experiencia</p></div>
       <div class="reveal delay-1"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="300">0</span>+</p><p class="text-brand-300 text-sm mt-1">proyectos instalados</p></div>
       <div class="reveal delay-2"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="9.6" data-dec="1">0</span> MW</p><p class="text-brand-200 text-sm mt-1">de potencia instalada</p></div>
       <div class="reveal delay-3"><p class="font-display font-extrabold text-3xl sm:text-4xl"><span class="counter" data-to="98">0</span>%</p><p class="text-brand-200 text-sm mt-1">clientes satisfechos</p></div>
@@ -320,7 +320,7 @@ body {
     <div class="grid lg:grid-cols-12 gap-12 items-start">
       <div class="lg:col-span-5 lg:sticky lg:top-28 reveal">
         <p class="text-sun-600 font-semibold tracking-wider text-sm uppercase">Por qué SHELDA</p>
-        <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-900 mt-3 tracking-tight">12 años de ingeniería, no de improvisación.</h2>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-900 mt-3 tracking-tight">5 años de ingeniería, no de improvisación.</h2>
         <p class="mt-5 text-brand-700/80 text-lg leading-relaxed">Hemos visto de todo en techos queretanos: desde láminas industriales hasta tejas coloniales. Esa experiencia se traduce en sistemas que producen lo prometido, año tras año.</p>
         <div class="mt-8 p-6 bg-white rounded-2xl border border-brand-100 shadow-soft">
           <div class="flex items-center justify-between text-sm font-semibold text-brand-800"><span>Producción real vs. prometida</span><span class="text-leaf-600">103%</span></div>
